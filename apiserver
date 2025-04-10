@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 
 // Load environment variables
 dotenv.config();
@@ -23,6 +24,9 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Serve static files from public directory
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Request logging middleware
 app.use((req, res, next) => {
@@ -45,6 +49,7 @@ const resourceAssociationRoutes = require('./routes/resourceAssociation');
 const rubricRoutes = require('./routes/rubric');
 const rubricCriterionRoutes = require('./routes/rubricCriterion');
 const rubricCriterionLevelRoutes = require('./routes/rubricCriterionLevel');
+const uploadRoutes = require('./routes/uploadRoute');
 
 // Use routes
 app.use('/api/frameworks', competencyFrameworkRoutes);
@@ -53,15 +58,16 @@ app.use('/api/associations', resourceAssociationRoutes);
 app.use('/api/rubrics', rubricRoutes);
 app.use('/api/criteria', rubricCriterionRoutes);
 app.use('/api/levels', rubricCriterionLevelRoutes);
+app.use('/api', uploadRoutes);
 
 // API documentation route
 app.get('/api/docs', (req, res) => {
   res.redirect('/api');
 });
 
-// Root endpoint
+// Root endpoint - serve the frontend UI
 app.get('/', (req, res) => {
-  res.send('Welcome to the Competency Framework API');
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // API base endpoint
@@ -98,4 +104,5 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`API available at http://localhost:${PORT}/api`);
+  console.log(`UI available at http://localhost:${PORT}`);
 });

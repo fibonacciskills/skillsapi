@@ -143,7 +143,14 @@ router.delete('/:id/direct-associations/:targetId', getDefinition, async (req, r
 async function getDefinition(req, res, next) {
   let definition;
   try {
-    definition = await CompetencyDefinition.findById(req.params.id);
+    definition = await CompetencyDefinition.findById(req.params.id)
+      .populate({
+        path: 'criteria',
+        populate: {
+          path: 'levels',
+          model: 'RubricCriterionLevel'
+        }
+      });
     if (definition == null) {
       return res.status(404).json({ message: 'Cannot find competency definition' });
     }

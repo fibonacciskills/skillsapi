@@ -1,0 +1,71 @@
+/* Framework and Competency List Styles */
+.framework-item, .competency-item {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.framework-item:hover, .competency-item:hover {
+    background-color: #f8f9fa;
+}
+
+.framework-item.active {
+    background-color: #e9ecef;
+    border-left: 4px solid #0d6efd;
+}
+
+/* Level Badges */
+.level-badge {
+    display: inline-block;
+    padding: 0.25em 0.6em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+    margin-right: 0.5rem;
+}
+
+.level-1 {
+    background-color: #cce5ff;
+    color: #004085;
+}
+
+.level-2 {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.level-3 {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.level-4 {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Modal Styles */
+.modal-body {
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+/* Loading Spinner */
+.spinner-border {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .card {
+        margin-bottom: 15px;
+    }
+} 

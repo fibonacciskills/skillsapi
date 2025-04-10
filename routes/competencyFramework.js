@@ -1,6 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const CompetencyFramework = require('../models/CompetencyFramework');
+const CompetencyDefinition = require('../models/CompetencyDefinition');
+const Rubric = require('../models/Rubric');
+const RubricCriterion = require('../models/RubricCriterion');
+const RubricCriterionLevel = require('../models/RubricCriterionLevel');
+const ResourceAssociation = require('../models/ResourceAssociation');
 
 // Get all competency frameworks
 router.get('/', async (req, res) => {
@@ -60,14 +65,38 @@ router.patch('/:id', getFramework, async (req, res) => {
   }
 });
 
-// Delete a competency framework
-router.delete('/:id', getFramework, async (req, res) => {
-  try {
-    await res.framework.remove();
-    res.json({ message: 'Competency Framework deleted' });
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+// Delete a framework and all its associated data
+router.delete('/:id', async (req, res) => {
+    try {
+        const frameworkId = req.params.id;
+
+        // Delete all associated competency definitions
+        await CompetencyDefinition.deleteMany({ framework: frameworkId });
+
+        // Delete all associated rubrics
+        const rubrics = await Rubric.find({ framework: frameworkId });
+        for (const rubric of rubrics) {
+            // Delete all criteria for this rubric
+            await RubricCriterion.deleteMany({ rubric: rubric._id });
+            
+            // Delete all criterion levels for this rubric
+            await RubricCriterionLevel.deleteMany({ rubric: rubric._id });
+            
+            // Delete the rubric itself
+            await Rubric.findByIdAndDelete(rubric._id);
+        }
+
+        // Delete all resource associations
+        await ResourceAssociation.deleteMany({ framework: frameworkId });
+
+        // Finally, delete the framework itself
+        await CompetencyFramework.findByIdAndDelete(frameworkId);
+
+        res.status(200).json({ message: 'Framework and all associated data deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting framework:', error);
+        res.status(500).json({ message: 'Error deleting framework', error: error.message });
+    }
 });
 
 // Get all competency definitions in a framework
