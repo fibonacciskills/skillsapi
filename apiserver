@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const path = require('path');
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
 
 // Load environment variables
 dotenv.config();
@@ -13,6 +15,81 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/competency-framework';
+
+// Swagger configuration
+const swaggerOptions = {
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Competency Framework API',
+            version: '1.0.0',
+            description: 'API for managing competency frameworks, definitions, and rubrics',
+        },
+        servers: [
+            {
+                url: 'http://localhost:8000',
+                description: 'Development server',
+            },
+        ],
+        components: {
+            schemas: {
+                CompetencyFramework: {
+                    type: 'object',
+                    properties: {
+                        name: { type: 'string' },
+                        description: { type: 'string' },
+                        version: { type: 'string' },
+                        competencyDefinitions: {
+                            type: 'array',
+                            items: { type: 'string' }
+                        }
+                    }
+                },
+                CompetencyDefinition: {
+                    type: 'object',
+                    properties: {
+                        title: { type: 'string' },
+                        description: { type: 'string' },
+                        category: { type: 'string' },
+                        abbreviation: { type: 'string' },
+                        competencyGroup: { type: 'string' },
+                        framework: { type: 'string' },
+                        criteria: {
+                            type: 'array',
+                            items: { type: 'string' }
+                        }
+                    }
+                },
+                RubricCriterion: {
+                    type: 'object',
+                    properties: {
+                        name: { type: 'string' },
+                        description: { type: 'string' },
+                        levels: {
+                            type: 'array',
+                            items: { type: 'string' }
+                        }
+                    }
+                },
+                RubricCriterionLevel: {
+                    type: 'object',
+                    properties: {
+                        level: { type: 'number' },
+                        name: { type: 'string' },
+                        description: { type: 'string' },
+                        examples: {
+                            type: 'array',
+                            items: { type: 'string' }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    apis: ['./routes/*.js'],
+};
+
+const swaggerSpecs = swaggerJsdoc(swaggerOptions);
 
 // Configure CORS
 const corsOptions = {
@@ -27,6 +104,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve static files from public directory
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve Swagger documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpecs));
 
 // Request logging middleware
 app.use((req, res, next) => {
@@ -60,11 +140,6 @@ app.use('/api/criteria', rubricCriterionRoutes);
 app.use('/api/levels', rubricCriterionLevelRoutes);
 app.use('/api', uploadRoutes);
 
-// API documentation route
-app.get('/api/docs', (req, res) => {
-  res.redirect('/api');
-});
-
 // Root endpoint - serve the frontend UI
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
@@ -74,7 +149,7 @@ app.get('/', (req, res) => {
 app.get('/api', (req, res) => {
   res.json({
     message: 'Welcome to the Competency Framework API',
-    documentation: '/api/docs',
+    documentation: '/api-docs',
     endpoints: {
       frameworks: '/api/frameworks',
       definitions: '/api/definitions',
@@ -105,4 +180,5 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`API available at http://localhost:${PORT}/api`);
   console.log(`UI available at http://localhost:${PORT}`);
+  console.log(`Swagger documentation available at http://localhost:${PORT}/api-docs`);
 });

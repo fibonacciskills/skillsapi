@@ -79,33 +79,35 @@ async function loadFrameworks() {
         }
 
         const frameworksHTML = frameworks.map(framework => `
-            <div class="list-group-item">
+            <div class="list-group-item list-group-item-action" data-framework-id="${framework._id}">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <h5 class="mb-1">${framework.name}</h5>
                         <p class="mb-1">${framework.description || 'No description'}</p>
                         <small>Version: ${framework.version}</small>
                     </div>
-                    <div>
-                        <button class="btn btn-primary btn-sm me-2 view-framework" data-framework-id="${framework._id}">View</button>
-                        <button class="btn btn-danger btn-sm delete-framework" data-framework-id="${framework._id}">Delete</button>
-                    </div>
+                    <button class="btn btn-danger btn-sm delete-framework" data-framework-id="${framework._id}">Delete</button>
                 </div>
             </div>
         `).join('');
 
         frameworksList.innerHTML = frameworksHTML;
 
-        // Add click handlers
-        document.querySelectorAll('.view-framework').forEach(button => {
-            button.addEventListener('click', () => {
-                const frameworkId = button.dataset.frameworkId;
-                selectFramework(frameworkId);
+        // Add click handlers for framework items
+        document.querySelectorAll('.list-group-item[data-framework-id]').forEach(item => {
+            item.addEventListener('click', (e) => {
+                // Don't trigger if clicking the delete button
+                if (!e.target.closest('.delete-framework')) {
+                    const frameworkId = item.dataset.frameworkId;
+                    selectFramework(frameworkId);
+                }
             });
         });
 
+        // Add click handlers for delete buttons
         document.querySelectorAll('.delete-framework').forEach(button => {
-            button.addEventListener('click', () => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent framework selection
                 const frameworkId = button.dataset.frameworkId;
                 deleteFramework(frameworkId);
             });
@@ -122,7 +124,7 @@ async function selectFramework(frameworkId) {
     selectedFrameworkId = frameworkId;
     
     // Update UI
-    document.querySelectorAll('.framework-item').forEach(item => {
+    document.querySelectorAll('.list-group-item[data-framework-id]').forEach(item => {
         item.classList.remove('active');
         if (item.dataset.frameworkId === frameworkId) {
             item.classList.add('active');
@@ -160,27 +162,23 @@ async function selectFramework(frameworkId) {
         }
 
         const competenciesHTML = competencies.map(competency => `
-            <div class="list-group-item">
+            <div class="list-group-item list-group-item-action" data-competency-id="${competency._id}">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <h5 class="mb-1">${competency.title}</h5>
                         <p class="mb-1">${competency.description || 'No description'}</p>
                         <small>Group: ${competency.competencyGroup || 'N/A'} | Category: ${competency.category || 'N/A'}</small>
                     </div>
-                    <button class="btn btn-sm btn-primary view-details" 
-                            data-competency-id="${competency._id}">
-                        View Details
-                    </button>
                 </div>
             </div>
         `).join('');
 
         document.getElementById('competencies-list').innerHTML = competenciesHTML;
 
-        // Add click handlers for view details buttons
-        document.querySelectorAll('.view-details').forEach(button => {
-            button.addEventListener('click', () => {
-                const competencyId = button.dataset.competencyId;
+        // Add click handlers for competency items
+        document.querySelectorAll('.list-group-item[data-competency-id]').forEach(item => {
+            item.addEventListener('click', () => {
+                const competencyId = item.dataset.competencyId;
                 showCompetencyDetails(competencyId);
             });
         });
@@ -228,7 +226,7 @@ async function showCompetencyDetails(competencyId) {
                                             <div class="level-badge level-${level.level}">Level ${level.level}</div>
                                             <h6 class="mt-2">${level.name || `Level ${level.level}`}</h6>
                                             <p class="mb-2">${level.description || 'No description available'}</p>
-                                            ${level.examples ? `
+                                            ${level.examples && level.examples.length > 0 ? `
                                                 <div class="examples mt-2">
                                                     <strong>Examples:</strong>
                                                     <ul class="mb-0">

@@ -7,7 +7,22 @@ const RubricCriterion = require('../models/RubricCriterion');
 const RubricCriterionLevel = require('../models/RubricCriterionLevel');
 const ResourceAssociation = require('../models/ResourceAssociation');
 
-// Get all competency frameworks
+/**
+ * @swagger
+ * /api/frameworks:
+ *   get:
+ *     summary: Get all competency frameworks
+ *     description: Retrieve a list of all competency frameworks
+ *     responses:
+ *       200:
+ *         description: A list of competency frameworks
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/CompetencyFramework'
+ */
 router.get('/', async (req, res) => {
   try {
     const frameworks = await CompetencyFramework.find();
@@ -17,12 +32,55 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get one competency framework by ID
+/**
+ * @swagger
+ * /api/frameworks/{id}:
+ *   get:
+ *     summary: Get a specific competency framework
+ *     description: Retrieve a specific competency framework by ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The framework ID
+ *     responses:
+ *       200:
+ *         description: The competency framework
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CompetencyFramework'
+ *       404:
+ *         description: Framework not found
+ */
 router.get('/:id', getFramework, (req, res) => {
   res.json(res.framework);
 });
 
-// Create a competency framework
+/**
+ * @swagger
+ * /api/frameworks:
+ *   post:
+ *     summary: Create a new competency framework
+ *     description: Create a new competency framework
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CompetencyFramework'
+ *     responses:
+ *       201:
+ *         description: Framework created successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CompetencyFramework'
+ *       400:
+ *         description: Invalid input
+ */
 router.post('/', async (req, res) => {
   const framework = new CompetencyFramework({
     name: req.body.name,
@@ -42,7 +100,35 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Update a competency framework
+/**
+ * @swagger
+ * /api/frameworks/{id}:
+ *   patch:
+ *     summary: Update a competency framework
+ *     description: Update a specific competency framework by ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The framework ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CompetencyFramework'
+ *     responses:
+ *       200:
+ *         description: Framework updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CompetencyFramework'
+ *       404:
+ *         description: Framework not found
+ */
 router.patch('/:id', getFramework, async (req, res) => {
   if (req.body.name != null) {
     res.framework.name = req.body.name;
@@ -65,7 +151,25 @@ router.patch('/:id', getFramework, async (req, res) => {
   }
 });
 
-// Delete a framework and all its associated data
+/**
+ * @swagger
+ * /api/frameworks/{id}:
+ *   delete:
+ *     summary: Delete a competency framework
+ *     description: Delete a specific competency framework and all its associated data
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The framework ID
+ *     responses:
+ *       200:
+ *         description: Framework and all associated data deleted successfully
+ *       404:
+ *         description: Framework not found
+ */
 router.delete('/:id', async (req, res) => {
     try {
         const frameworkId = req.params.id;
