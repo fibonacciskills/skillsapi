@@ -1,0 +1,29 @@
+{
+  "name": "competency-framework-api",
+  "version": "1.0.0",
+  "description": "API server for competency framework management",
+  "main": "apiserver",
+  "scripts": {
+    "start": "node apiserver",
+    "dev": "nodemon apiserver",
+    "test": "jest",
+    "import": "node utils/importCSV.js",
+    "create-associations": "node utils/createAssociations.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.0.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.7"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.12",
+    "supertest": "^6.1.6"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+} 

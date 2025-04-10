@@ -1,0 +1,101 @@
+#!/usr/bin/env node
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const dotenv = require('dotenv');
+
+// Load environment variables
+dotenv.config();
+
+const app = express();
+const PORT = process.env.PORT || 8000;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/competency-framework';
+
+// Configure CORS
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN || '*',
+  optionsSuccessStatus: 200
+};
+
+// Middleware
+app.use(cors(corsOptions));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Request logging middleware
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.originalUrl}`);
+  next();
+});
+
+// Database connection
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch(err => console.error('Could not connect to MongoDB', err));
+
+// Import routes
+const competencyFrameworkRoutes = require('./routes/competencyFramework');
+const competencyDefinitionRoutes = require('./routes/competencyDefinition');
+const resourceAssociationRoutes = require('./routes/resourceAssociation');
+const rubricRoutes = require('./routes/rubric');
+const rubricCriterionRoutes = require('./routes/rubricCriterion');
+const rubricCriterionLevelRoutes = require('./routes/rubricCriterionLevel');
+
+// Use routes
+app.use('/api/frameworks', competencyFrameworkRoutes);
+app.use('/api/definitions', competencyDefinitionRoutes);
+app.use('/api/associations', resourceAssociationRoutes);
+app.use('/api/rubrics', rubricRoutes);
+app.use('/api/criteria', rubricCriterionRoutes);
+app.use('/api/levels', rubricCriterionLevelRoutes);
+
+// API documentation route
+app.get('/api/docs', (req, res) => {
+  res.redirect('/api');
+});
+
+// Root endpoint
+app.get('/', (req, res) => {
+  res.send('Welcome to the Competency Framework API');
+});
+
+// API base endpoint
+app.get('/api', (req, res) => {
+  res.json({
+    message: 'Welcome to the Competency Framework API',
+    documentation: '/api/docs',
+    endpoints: {
+      frameworks: '/api/frameworks',
+      definitions: '/api/definitions',
+      associations: '/api/associations',
+      rubrics: '/api/rubrics',
+      criteria: '/api/criteria',
+      levels: '/api/levels'
+    }
+  });
+});
+
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({
+    message: 'Something went wrong!',
+    error: process.env.NODE_ENV === 'production' ? {} : err
+  });
+});
+
+// Handle 404 routes
+app.use((req, res) => {
+  res.status(404).json({ message: 'Route not found' });
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+  console.log(`API available at http://localhost:${PORT}/api`);
+});
