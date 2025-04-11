@@ -5,6 +5,9 @@ A RESTful API server built on Node.js and Express for managing competency framew
 ## Overview
 
 This API provides functionality to manage competency frameworks, definitions, resource associations, rubrics, rubric criteria, and criterion levels. It implements the relationships shown in the competency framework schema, including direct and indirect associations between competency definitions.
+
+**Overview Video:** 
+
 https://somup.com/cTf6rpsuGT
 
 
