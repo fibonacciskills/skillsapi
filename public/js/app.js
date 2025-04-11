@@ -1,5 +1,5 @@
 // Global variables
-const API_BASE_URL = '/api';
+const API_BASE_URL = window.location.origin;
 let selectedFrameworkId = null;
 let competencyModalInstance = null;
 let currentCompetencyId = null;
@@ -41,21 +41,22 @@ async function handleCSVUpload(event) {
     uploadStatus.innerHTML = 'Uploading and processing...';
 
     try {
-        const response = await fetch(`${API_BASE_URL}/upload-csv`, {
+        const response = await fetch(`${API_BASE_URL}/api/upload-csv`, {
             method: 'POST',
             body: formData
         });
 
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(errorText || 'Upload failed');
+        }
+
         const result = await response.json();
 
-        if (response.ok) {
-            uploadStatus.classList.add('alert-success');
-            uploadStatus.innerHTML = `Framework created successfully! Processed ${result.processedCount} competencies.`;
-            form.reset();
-            loadFrameworks(); // Refresh the frameworks list
-        } else {
-            throw new Error(result.message || 'Upload failed');
-        }
+        uploadStatus.classList.add('alert-success');
+        uploadStatus.innerHTML = `Framework created successfully! Processed ${result.processedCount} competencies.`;
+        form.reset();
+        loadFrameworks(); // Refresh the frameworks list
     } catch (error) {
         uploadStatus.classList.add('alert-danger');
         uploadStatus.innerHTML = `Error: ${error.message}`;
