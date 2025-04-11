@@ -138,7 +138,7 @@ app.use('/api/associations', resourceAssociationRoutes);
 app.use('/api/rubrics', rubricRoutes);
 app.use('/api/criteria', rubricCriterionRoutes);
 app.use('/api/levels', rubricCriterionLevelRoutes);
-app.use('/api', uploadRoutes);
+app.use('/api/upload-csv', uploadRoutes);
 
 // Root endpoint - serve the frontend UI
 app.get('/', (req, res) => {
