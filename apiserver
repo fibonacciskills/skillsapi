@@ -82,6 +82,157 @@ const swaggerOptions = {
                             items: { type: 'string' }
                         }
                     }
+                },
+                // CASE 1.1 Data Models
+                CFItem: {
+                    type: 'object',
+                    properties: {
+                        identifier: { type: 'string' },
+                        uri: { type: 'string' },
+                        title: { type: 'string' },
+                        fullStatement: { type: 'string' },
+                        alternativeLabel: { type: 'string' },
+                        CFItemType: { type: 'string' },
+                        CFItemTypeURI: { type: 'string' },
+                        notes: { type: 'string' },
+                        lastChangeDateTime: { type: 'string', format: 'date-time' },
+                        CFDocumentURI: { type: 'string' },
+                        creators: { 
+                            type: 'array',
+                            items: { type: 'string' }
+                        },
+                        extensions: { 
+                            type: 'object',
+                            additionalProperties: true
+                        }
+                    }
+                },
+                CFDocument: {
+                    type: 'object',
+                    properties: {
+                        identifier: { type: 'string' },
+                        uri: { type: 'string' },
+                        title: { type: 'string' },
+                        description: { type: 'string' },
+                        creator: { type: 'string' },
+                        publisher: { type: 'string' },
+                        CFPackageURI: { type: 'string' },
+                        version: { type: 'string' },
+                        lastChangeDateTime: { type: 'string', format: 'date-time' },
+                        officialSourceURL: { type: 'string' },
+                        extensions: { 
+                            type: 'object',
+                            additionalProperties: true
+                        }
+                    }
+                },
+                CFAssociation: {
+                    type: 'object',
+                    properties: {
+                        identifier: { type: 'string' },
+                        associationType: { type: 'string' },
+                        sourceNodeURI: { type: 'string' },
+                        targetNodeURI: { type: 'string' },
+                        CFDocumentURI: { type: 'string' },
+                        lastChangeDateTime: { type: 'string', format: 'date-time' },
+                        originNodeURI: { type: 'string' }
+                    }
+                },
+                CFRubric: {
+                    type: 'object',
+                    properties: {
+                        identifier: { type: 'string' },
+                        title: { type: 'string' },
+                        description: { type: 'string' },
+                        CFDocumentURI: { type: 'string' },
+                        rubricCriteria: {
+                            type: 'array',
+                            items: { 
+                                type: 'object',
+                                $ref: '#/components/schemas/CFRubricCriterion'
+                            }
+                        }
+                    }
+                },
+                CFRubricCriterion: {
+                    type: 'object',
+                    properties: {
+                        identifier: { type: 'string' },
+                        rubricId: { type: 'string' },
+                        category: { type: 'string' },
+                        description: { type: 'string' },
+                        CFItemURI: { type: 'string' },
+                        weight: { type: 'number' },
+                        position: { type: 'integer' },
+                        rubricCriterionLevels: {
+                            type: 'array',
+                            items: { 
+                                type: 'object',
+                                $ref: '#/components/schemas/CFRubricCriterionLevel'
+                            }
+                        }
+                    }
+                },
+                CFRubricCriterionLevel: {
+                    type: 'object',
+                    properties: {
+                        identifier: { type: 'string' },
+                        rubricCriterionId: { type: 'string' },
+                        level: { type: 'integer' },
+                        description: { type: 'string' },
+                        quality: { type: 'string' },
+                        score: { type: 'number' },
+                        feedback: { type: 'string' }
+                    }
+                },
+                CFPackage: {
+                    type: 'object',
+                    properties: {
+                        identifier: { type: 'string' },
+                        uri: { type: 'string' },
+                        creator: { type: 'string' },
+                        title: { type: 'string' },
+                        lastChangeDateTime: { type: 'string', format: 'date-time' },
+                        CFDocument: { 
+                            type: 'object',
+                            $ref: '#/components/schemas/CFDocument'
+                        },
+                        CFItems: { 
+                            type: 'array',
+                            items: { 
+                                type: 'object',
+                                $ref: '#/components/schemas/CFItem'
+                            }
+                        },
+                        CFAssociations: { 
+                            type: 'array',
+                            items: { 
+                                type: 'object',
+                                $ref: '#/components/schemas/CFAssociation'
+                            }
+                        },
+                        CFRubrics: { 
+                            type: 'array',
+                            items: { 
+                                type: 'object',
+                                $ref: '#/components/schemas/CFRubric'
+                            }
+                        },
+                        CFDefinitions: { 
+                            type: 'object',
+                            properties: {
+                                CFConcepts: { type: 'array', items: { type: 'object' } },
+                                CFSubjects: { type: 'array', items: { type: 'object' } },
+                                CFLicenses: { type: 'array', items: { type: 'object' } },
+                                CFItemTypes: { type: 'array', items: { type: 'object' } },
+                                CFAssociationGroupings: { type: 'array', items: { type: 'object' } }
+                            }
+                        },
+                        extensions: { 
+                            type: 'object',
+                            additionalProperties: true
+                        }
+                    }
                 }
             }
         }
@@ -130,6 +281,7 @@ const rubricRoutes = require('./routes/rubric');
 const rubricCriterionRoutes = require('./routes/rubricCriterion');
 const rubricCriterionLevelRoutes = require('./routes/rubricCriterionLevel');
 const uploadRoutes = require('./routes/uploadRoute');
+const caseViewRoutes = require('./routes/caseView');
 
 // Use routes
 app.use('/api/frameworks', competencyFrameworkRoutes);
@@ -139,6 +291,7 @@ app.use('/api/rubrics', rubricRoutes);
 app.use('/api/criteria', rubricCriterionRoutes);
 app.use('/api/levels', rubricCriterionLevelRoutes);
 app.use('/api', uploadRoutes);
+app.use('/api/case', caseViewRoutes);
 
 // Root endpoint - serve the frontend UI
 app.get('/', (req, res) => {
@@ -156,7 +309,8 @@ app.get('/api', (req, res) => {
       associations: '/api/associations',
       rubrics: '/api/rubrics',
       criteria: '/api/criteria',
-      levels: '/api/levels'
+      levels: '/api/levels',
+      case: '/api/case'
     }
   });
 });

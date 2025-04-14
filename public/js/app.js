@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Setup event listeners
     document.getElementById('show-json-btn').addEventListener('click', showCompetencyJSON);
+    document.getElementById('show-case-json-btn').addEventListener('click', showCompetencyCASEJSON);
     document.getElementById('upload-form').addEventListener('submit', handleCSVUpload);
 
     // Load frameworks on page load
@@ -284,6 +285,13 @@ async function showCompetencyDetails(competencyId) {
 function showCompetencyJSON() {
     if (currentCompetencyId) {
         window.open(`${API_BASE_URL}/definitions/${currentCompetencyId}`, '_blank');
+    }
+}
+
+// Show CASE JSON for current competency
+function showCompetencyCASEJSON() {
+    if (currentCompetencyId) {
+        window.open(`${API_BASE_URL}/case/CFItems/${currentCompetencyId}`, '_blank');
     }
 }
 
