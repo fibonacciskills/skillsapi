@@ -29,6 +29,10 @@ View frameworks and skills
 Swagger Page
 ![Screenshot 2025-04-11 at 8 11 15 AM](https://github.com/user-attachments/assets/03b547e3-8479-4c65-ac45-b0b6598f79f2)
 
+NOTE: 
+- Sample JSON from the Data model of IEEE 1484.20.3 is the 'Show JSON" button and also now supports a CASE 1.1 implementation for skills only; job levels coming
+- sample jsons are in the example json outputs folder as well. 
+
 
 ## Requirements
 
