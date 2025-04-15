@@ -37,8 +37,15 @@
                     <div class="card-body">
                         <form id="upload-form">
                             <div class="mb-3">
-                                <label for="csv-file" class="form-label">CSV File</label>
-                                <input type="file" class="form-control" id="csv-file" accept=".csv" required>
+                                <label for="file-format" class="form-label">File Format</label>
+                                <select class="form-control" id="file-format" required>
+                                    <option value="csv">CSV</option>
+                                    <option value="case">CASE 1.1 JSON</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="csv-file" class="form-label">Framework File</label>
+                                <input type="file" class="form-control" id="csv-file" accept=".csv,.json" required>
                             </div>
                             <div class="mb-3">
                                 <label for="framework-name" class="form-label">Framework Name</label>
@@ -89,6 +96,16 @@
                         </div>
                         <div id="selected-framework-info" class="d-none">
                             <h3 id="selected-framework-name" class="h6 mb-3"></h3>
+                            
+                            <!-- Competency Upload Form -->
+                            <form id="competency-upload-form" class="mb-4">
+                                <div class="mb-3">
+                                    <label for="competency-file" class="form-label">Upload Competencies (CSV)</label>
+                                    <input type="file" class="form-control" id="competency-file" accept=".csv" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Upload Competencies</button>
+                            </form>
+                            
                             <div id="competencies-list" class="list-group">
                                 <!-- Competencies will be loaded here -->
                             </div>

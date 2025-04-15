@@ -1,0 +1,52 @@
+{
+  "CFDocument": {
+    "identifier": "a4b0f008-08a2-428e-a7f1-9e753771e960",
+    "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFDocuments/a4b0f008-08a2-428e-a7f1-9e753771e960",
+    "creator": "TBD",
+    "title": "Job_Skills_Architecture-Job Roles",
+    "lastChangeDateTime": "2025-04-14T16:26:52+00:00",
+    "publisher": "Christopher Houston",
+    "description": "Workforce Job Roles",
+    "subject": [
+      "Workforce"
+    ],
+    "language": "en",
+    "adoptionStatus": "Draft",
+    "frameworkType": "Wellspring Workforce Frameworks",
+    "caseVersion": "1.1"
+  },
+  "CFItems": [
+    {
+      "identifier": "10ad96e2-5e0f-4e11-864e-9bb0e7415155",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/10ad96e2-5e0f-4e11-864e-9bb0e7415155",
+      "fullStatement": "Wear Common Protective or Safety Equipment such as Safety Shoes, Glasses, Gloves, Hearing Protection, Hard Hats, or Life Jackets - 85% responded \"Every day.\"",
+      "humanCodingScheme": "47-2022.00.WorkContext1",
+      "abbreviatedStatement": "Wear Common Protective or Safety Equipment such as Safety Shoes, Glasses, Gloves, Hearing Protection, Hard Hats, or Life Jackets",
+      "CFItemType": "Work Context"
+    },
+    {
+      "identifier": "3558d9d9-5585-4e1d-9c79-c66a1b968e7a",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/3558d9d9-5585-4e1d-9c79-c66a1b968e7a",
+      "fullStatement": "Spend Time Using Your Hands to Handle, Control, or Feel Objects, Tools, or Controls - 83% responded \"Continually or almost continually.\"",
+      "humanCodingScheme": "47-2022.00.WorkContext2",
+      "abbreviatedStatement": "Spend Time Using Your Hands to Handle, Control, or Feel Objects, Tools, or Controls",
+      "CFItemType": "Work Context"
+    },
+    {
+      "identifier": "7b63ed6b-6843-44aa-a235-9d30d6aee4f1",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/7b63ed6b-6843-44aa-a235-9d30d6aee4f1",
+      "fullStatement": "Outdoors, Exposed to All Weather Conditions - 80% responded \"Every day.\"",
+      "humanCodingScheme": "47-2022.00.WorkContext3",
+      "abbreviatedStatement": "Outdoors, Exposed to All Weather Conditions",
+      "CFItemType": "Work Context"
+    },
+    {
+      "identifier": "202f36b0-512e-42d0-9524-190a080cf3de",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/202f36b0-512e-42d0-9524-190a080cf3de",
+      "fullStatement": "Face-to-Face Discussions with Individuals and Within Teams - 73% responded \"Every day.\"",
+      "humanCodingScheme": "47-2022.00.WorkContext5",
+      "abbreviatedStatement": "Face-to-Face Discussions with Individuals and Within Teams",
+      "CFItemType": "Work Context"
+    }
+  ]
+}

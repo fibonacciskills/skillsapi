@@ -6,6 +6,7 @@ const ResourceAssociation = require('../models/ResourceAssociation');
 const Rubric = require('../models/Rubric');
 const RubricCriterion = require('../models/RubricCriterion');
 const RubricCriterionLevel = require('../models/RubricCriterionLevel');
+const upload = require('../middleware/upload');
 
 /**
  * Transform a CompetencyDefinition to CASE 1.1 CFItem format
@@ -34,7 +35,6 @@ function mapDefinitionToCFItem(definition, baseUrl) {
         // If the level is just an ID reference
         return {
           identifier: level.toString(),
-          // We can't include more details as this would require another DB lookup
           reference: `${baseUrl}/api/levels/${level.toString()}`
         };
       });
@@ -47,31 +47,45 @@ function mapDefinitionToCFItem(definition, baseUrl) {
         weight: criterion.weight
       };
     }
-    
     // If the criterion is just an ID reference
     return {
       identifier: criterion.toString(),
       reference: `${baseUrl}/api/criteria/${criterion.toString()}`
     };
-  }) || [];
-  
+  });
+
+  // Map competency type to CASE 1.1 types
+  const typeMap = {
+    'skill': 'Skill',
+    'knowledge': 'Knowledge',
+    'ability': 'Ability',
+    'disposition': 'Disposition',
+    'default': 'Competency'
+  };
+
+  const cfItemType = typeMap[definition.type?.toLowerCase()] || typeMap.default;
+  const cfItemTypeUri = `http://purl.org/ctdl/terms/${cfItemType}`;
+
   return {
     identifier: definition._id.toString(),
     uri: uri,
     title: definition.title,
     fullStatement: definition.description,
-    alternativeLabel: definition.abbreviation,
-    CFItemType: definition.category || "Competency", 
-    CFItemTypeURI: `${baseUrl}/api/case/CFItemTypes/${definition.category || "Competency"}`,
-    notes: definition.competencyGroup,
-    lastChangeDateTime: definition.metadata.updatedAt,
-    CFDocumentURI: `${baseUrl}/api/case/CFDocuments/${definition.framework}`, 
-    creators: [definition.metadata.createdBy || "Unknown"],
-    // CASE 1.1 specific fields
+    CFItemType: cfItemType,
+    CFItemTypeURI: cfItemTypeUri,
+    conceptKeywords: definition.keywords || [],
+    educationLevel: definition.educationLevel || [],
+    language: definition.language || 'en-US',
+    license: definition.license || 'https://creativecommons.org/licenses/by/4.0/',
+    status: definition.status || 'Active',
+    lastChangeDateTime: definition.updatedAt || new Date().toISOString(),
+    CFDocumentURI: `${baseUrl}/api/case/CFDocuments/${definition.framework}`,
+    creators: definition.creators || ['System'],
+    notes: definition.notes || '',
     extensions: {
-      directAssociations: definition.directAssociations,
-      resourceAssociations: definition.resourceAssociations,
-      criteria: criteriaWithLevels
+      criteria: criteriaWithLevels || [],
+      directAssociations: definition.directAssociations || [],
+      resourceAssociations: definition.resourceAssociations || []
     }
   };
 }
@@ -474,6 +488,56 @@ router.get('/CFPackages/:id', async (req, res) => {
       operationSuccessful: false
     });
   }
+});
+
+router.post('/upload', upload.single('file'), async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ error: 'No file uploaded' });
+        }
+
+        const fileFormat = req.body.format || 'csv';
+        let items = [];
+
+        if (fileFormat === 'csv') {
+            // Existing CSV processing
+            const fileContent = req.file.buffer.toString('utf8');
+            const rows = fileContent.split('\n').map(row => row.trim()).filter(row => row);
+            const headers = rows[0].split(',').map(header => header.trim());
+            
+            items = rows.slice(1).map(row => {
+                const values = row.split(',').map(value => value.trim());
+                const item = {};
+                headers.forEach((header, index) => {
+                    item[header] = values[index];
+                });
+                return item;
+            });
+        } else if (fileFormat === 'case') {
+            // CASE 1.1 JSON processing
+            const jsonContent = JSON.parse(req.file.buffer.toString('utf8'));
+            
+            if (!jsonContent.CFDocument || !jsonContent.CFItems) {
+                return res.status(400).json({ error: 'Invalid CASE 1.1 JSON format' });
+            }
+
+            items = jsonContent.CFItems.map(item => ({
+                identifier: item.identifier,
+                fullStatement: item.fullStatement,
+                abbreviatedStatement: item.abbreviatedStatement || '',
+                uri: item.uri || '',
+                type: item.type || 'Competency',
+                lastChangeDateTime: item.lastChangeDateTime || new Date().toISOString()
+            }));
+        }
+
+        // Store items in session
+        req.session.items = items;
+        res.json({ success: true, count: items.length });
+    } catch (error) {
+        console.error('Upload error:', error);
+        res.status(500).json({ error: 'Error processing file' });
+    }
 });
 
 module.exports = router; 

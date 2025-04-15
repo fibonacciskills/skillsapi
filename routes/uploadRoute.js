@@ -195,4 +195,88 @@ router.post('/upload-csv', upload.single('csvFile'), async (req, res) => {
     }
 });
 
+// Upload competencies to existing framework
+router.post('/upload-competencies/:frameworkId', upload.single('csvFile'), async (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ message: 'No file uploaded' });
+    }
+
+    try {
+        // Find the framework
+        const framework = await CompetencyFramework.findById(req.params.frameworkId);
+        if (!framework) {
+            return res.status(404).json({ message: 'Framework not found' });
+        }
+
+        const results = [];
+        let processedCount = 0;
+
+        // Parse the CSV file
+        fs.createReadStream(req.file.path)
+            .pipe(csv())
+            .on('data', (data) => results.push(data))
+            .on('end', async () => {
+                console.log(`Found ${results.length} competency definitions in CSV`);
+                
+                for (const row of results) {
+                    // Check if required fields exist
+                    if (!row.title && !row['title']) {
+                        console.warn('Skipping row - missing title field');
+                        continue;
+                    }
+
+                    const title = row.title || row['title'];
+                    const abbreviation = row.abbreviation || row['abbreviation'] || '';
+                    const competencyGroup = row['competency group'] || row.competencyGroup || '';
+                    const category = row.category || '';
+                    const description = row.description || '';
+
+                    // Check if competency definition already exists
+                    let definition = await CompetencyDefinition.findOne({
+                        title: title,
+                        framework: framework._id
+                    });
+
+                    if (!definition) {
+                        definition = new CompetencyDefinition({
+                            title,
+                            description,
+                            category,
+                            abbreviation,
+                            competencyGroup,
+                            framework: framework._id,
+                            metadata: {
+                                createdBy: 'Web UI'
+                            }
+                        });
+                        await definition.save();
+
+                        // Add reference to the framework
+                        framework.competencyDefinitions.push(definition._id);
+                        await framework.save();
+                    } else {
+                        definition.description = description;
+                        definition.category = category;
+                        definition.abbreviation = abbreviation;
+                        definition.competencyGroup = competencyGroup;
+                        await definition.save();
+                    }
+
+                    processedCount++;
+                }
+
+                // Clean up the uploaded file
+                fs.unlinkSync(req.file.path);
+
+                res.status(201).json({
+                    message: 'Competencies added successfully',
+                    processedCount
+                });
+            });
+    } catch (error) {
+        console.error('Error adding competencies:', error);
+        res.status(500).json({ message: 'Error adding competencies', error: error.message });
+    }
+});
+
 module.exports = router; 

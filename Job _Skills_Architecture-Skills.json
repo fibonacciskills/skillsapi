@@ -1,0 +1,1169 @@
+{
+  "CFDocument": {
+    "identifier": "bc8701cb-5a52-4886-8bc7-c8eb04df96ef",
+    "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFDocuments/bc8701cb-5a52-4886-8bc7-c8eb04df96ef",
+    "creator": "TBD",
+    "title": "Job_Skills_Architecture-Skills",
+    "lastChangeDateTime": "2025-04-14T16:27:06+00:00",
+    "publisher": "Christopher Houston",
+    "language": "en",
+    "adoptionStatus": "Draft",
+    "frameworkType": "Wellspring Workforce Frameworks",
+    "caseVersion": "1.1"
+  },
+  "CFItems": [
+    {
+      "identifier": "867bd31f-fff0-4370-942a-f70518ee3979",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/867bd31f-fff0-4370-942a-f70518ee3979",
+      "fullStatement": "Welding Skills",
+      "humanCodingScheme": "Welding Skills",
+      "CFItemType": "Skill Category",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-17T21:20:27+00:00",
+      "CFItemTypeURI": {
+        "title": "Skill Category",
+        "identifier": "ec4da457-fb82-4238-9efa-15604aeda4fd",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/ec4da457-fb82-4238-9efa-15604aeda4fd"
+      }
+    },
+    {
+      "identifier": "bda18592-1d43-4760-9c02-2afcca7ad6f9",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/bda18592-1d43-4760-9c02-2afcca7ad6f9",
+      "fullStatement": "Technical Welding",
+      "humanCodingScheme": "Technical Welding",
+      "CFItemType": "Skill",
+      "CFItemTypeURI": {
+        "title": "Skill",
+        "identifier": "62ddb866-969a-4447-b8aa-6961c0f43646",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/62ddb866-969a-4447-b8aa-6961c0f43646"
+      },
+      "language": "en",
+      "lastChangeDateTime": "2025-03-17T21:26:09+00:00"
+    },
+    {
+      "identifier": "b66b41ff-0926-4255-97a7-9941350b4c8e",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/b66b41ff-0926-4255-97a7-9941350b4c8e",
+      "fullStatement": "Understands basic TIG welding techniques and can perform simple welds under supervision.",
+      "humanCodingScheme": "1-Low Proficiency",
+      "CFItemType": "Proficiency Level",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-17T21:23:53+00:00",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      }
+    },
+    {
+      "identifier": "c6b36958-4aac-4973-b0a0-2853f3bae55a",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/c6b36958-4aac-4973-b0a0-2853f3bae55a",
+      "fullStatement": "Executes standard TIG welds independently, with occasional guidance for complex tasks.",
+      "humanCodingScheme": "2-Moderate Proficiency",
+      "CFItemType": "Proficiency Level",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-17T21:24:25+00:00",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      }
+    },
+    {
+      "identifier": "37e034f8-deca-410b-8764-15f7097c8bf8",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/37e034f8-deca-410b-8764-15f7097c8bf8",
+      "fullStatement": "Produces high-quality, precise welds on various metals and alloys, adhering to industry standards.",
+      "humanCodingScheme": "3-Mastery",
+      "CFItemType": "Proficiency Level",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-17T21:24:50+00:00",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      }
+    },
+    {
+      "identifier": "3079c837-ff49-4f7f-b67a-243348641268",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/3079c837-ff49-4f7f-b67a-243348641268",
+      "fullStatement": "Innovates welding techniques, mentors others, and ensures exceptional quality in challenging projects.",
+      "humanCodingScheme": "4-High Proficiency",
+      "CFItemType": "Proficiency Level",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-17T21:25:10+00:00",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      }
+    },
+    {
+      "identifier": "6fbd2f5c-0ba7-4700-82df-10ddd8112131",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/6fbd2f5c-0ba7-4700-82df-10ddd8112131",
+      "fullStatement": "Blueprint Reading",
+      "humanCodingScheme": "Blueprint Reading",
+      "CFItemType": "Skill",
+      "CFItemTypeURI": {
+        "title": "Skill",
+        "identifier": "62ddb866-969a-4447-b8aa-6961c0f43646",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/62ddb866-969a-4447-b8aa-6961c0f43646"
+      },
+      "language": "en",
+      "lastChangeDateTime": "2025-03-17T21:25:58+00:00"
+    },
+    {
+      "identifier": "e7d9da3a-264f-4735-b074-2d17c4d55fc0",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/e7d9da3a-264f-4735-b074-2d17c4d55fc0",
+      "fullStatement": "Recognizes basic symbols and layouts but requires assistance to interpret detailed blueprints.",
+      "humanCodingScheme": "1-Low Proficiency (BP)",
+      "CFItemType": "Proficiency Level",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-17T21:27:46+00:00",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      }
+    },
+    {
+      "identifier": "71f81697-5eed-48d1-ab96-c11352e056eb",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/71f81697-5eed-48d1-ab96-c11352e056eb",
+      "fullStatement": "Reads and follows standard blueprints with minimal guidance.",
+      "humanCodingScheme": "2 - Moderate Proficiency (BP)",
+      "CFItemType": "Proficiency Level",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      },
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T19:56:05+00:00"
+    },
+    {
+      "identifier": "35624d89-14bb-4f5a-9c90-18bdabe82eb2",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/35624d89-14bb-4f5a-9c90-18bdabe82eb2",
+      "fullStatement": "Accurately interprets complex blueprints and specifications to plan and execute welding tasks.",
+      "humanCodingScheme": "3 - Mastery (BP)",
+      "CFItemType": "Proficiency Level",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      },
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T19:56:17+00:00"
+    },
+    {
+      "identifier": "d0c22c81-234c-46d7-9ec1-195098d2dacb",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/d0c22c81-234c-46d7-9ec1-195098d2dacb",
+      "fullStatement": "Identifies potential design issues and collaborates with engineers to optimize plans.",
+      "humanCodingScheme": "4 - High Proficiency (BP)",
+      "CFItemType": "Proficiency Level",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      },
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T19:56:27+00:00"
+    },
+    {
+      "identifier": "e97aca1f-9a86-402b-a269-5ec5ac8a80b8",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/e97aca1f-9a86-402b-a269-5ec5ac8a80b8",
+      "fullStatement": "Attention to Detail",
+      "humanCodingScheme": "Attention to Detail",
+      "CFItemType": "Skill",
+      "CFItemTypeURI": {
+        "title": "Skill",
+        "identifier": "62ddb866-969a-4447-b8aa-6961c0f43646",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/62ddb866-969a-4447-b8aa-6961c0f43646"
+      },
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T19:53:30+00:00"
+    },
+    {
+      "identifier": "b5de4892-0650-4372-a080-d3f016658c09",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/b5de4892-0650-4372-a080-d3f016658c09",
+      "fullStatement": "Identifies obvious errors but may overlook finer details in welds or materials.",
+      "humanCodingScheme": "1 - Low Proficiency (AD)",
+      "CFItemType": "Proficiency Level",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T19:54:22+00:00",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      }
+    },
+    {
+      "identifier": "01e675cf-ed3f-4a3b-8494-1ff67641aa76",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/01e675cf-ed3f-4a3b-8494-1ff67641aa76",
+      "fullStatement": "Detects and corrects minor imperfections in welds with some oversight.",
+      "humanCodingScheme": "2 - Moderate Proficiency (AD)",
+      "CFItemType": "Proficiency Level",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T19:54:46+00:00",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      }
+    },
+    {
+      "identifier": "6559d3b6-b1e1-45bf-b7e0-c975c7d74729",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/6559d3b6-b1e1-45bf-b7e0-c975c7d74729",
+      "fullStatement": "Consistently ensures welds meet exacting standards, with no errors or defects.",
+      "humanCodingScheme": "3 - Mastery (AD)",
+      "CFItemType": "Proficiency Level",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      },
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T19:55:16+00:00"
+    },
+    {
+      "identifier": "0d1cf500-219d-4c3d-bd2e-fa2353a0a037",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/0d1cf500-219d-4c3d-bd2e-fa2353a0a037",
+      "fullStatement": "Anticipates and prevents potential issues, maintaining flawless quality control.",
+      "humanCodingScheme": "4 - High Proficiency (AD)",
+      "CFItemType": "Proficiency Level",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      },
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T19:55:42+00:00"
+    },
+    {
+      "identifier": "afcdb7e4-5804-41e6-930c-d52b7a4bad70",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/afcdb7e4-5804-41e6-930c-d52b7a4bad70",
+      "fullStatement": "Business Process Skills",
+      "humanCodingScheme": "Business Process Skills",
+      "CFItemType": "Skill Category",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T22:13:51+00:00",
+      "CFItemTypeURI": {
+        "title": "Skill Category",
+        "identifier": "ec4da457-fb82-4238-9efa-15604aeda4fd",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/ec4da457-fb82-4238-9efa-15604aeda4fd"
+      }
+    },
+    {
+      "identifier": "75ad1f62-1e13-49e4-bd34-539970e47a45",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/75ad1f62-1e13-49e4-bd34-539970e47a45",
+      "fullStatement": "Lean Six Sigma Knowledge",
+      "humanCodingScheme": "1. Lean Six Sigma Knowledge",
+      "CFItemType": "Skill",
+      "CFItemTypeURI": {
+        "title": "Skill",
+        "identifier": "62ddb866-969a-4447-b8aa-6961c0f43646",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/62ddb866-969a-4447-b8aa-6961c0f43646"
+      },
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T22:24:04+00:00"
+    },
+    {
+      "identifier": "b24ab56c-6b49-42ed-be34-49be3daf2bcc",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/b24ab56c-6b49-42ed-be34-49be3daf2bcc",
+      "fullStatement": "Understands basic Lean and Six Sigma concepts (e.g., waste types, DMAIC).",
+      "humanCodingScheme": "1.1 Basic",
+      "CFItemType": "Proficiency Level",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T22:16:22+00:00",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      }
+    },
+    {
+      "identifier": "5750bab0-059c-4000-9a34-1cfd8cff373b",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/5750bab0-059c-4000-9a34-1cfd8cff373b",
+      "fullStatement": "Can participate in improvement projects and use tools like 5S, Fishbone, Pareto.",
+      "humanCodingScheme": "1.2 Intermediate",
+      "CFItemType": "Proficiency Level",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      },
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T22:17:00+00:00"
+    },
+    {
+      "identifier": "be39b8c0-a085-4173-8924-23b788f83a80",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/be39b8c0-a085-4173-8924-23b788f83a80",
+      "fullStatement": "Leads CI projects using DMAIC or PDCA; capable of data-driven analysis.",
+      "humanCodingScheme": "1.3 Advanced",
+      "CFItemType": "Proficiency Level",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      },
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T22:17:20+00:00"
+    },
+    {
+      "identifier": "050f531d-46c0-46bc-b8db-961dfe21b85e",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/050f531d-46c0-46bc-b8db-961dfe21b85e",
+      "fullStatement": "Trains others in Lean Six Sigma; develops org-wide strategies; Green/Black Belt certified.",
+      "humanCodingScheme": "1.4 Expert",
+      "CFItemType": "Proficiency Level",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      },
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T22:17:43+00:00"
+    },
+    {
+      "identifier": "bb89394b-de18-4a37-a5a1-828e5a139514",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/bb89394b-de18-4a37-a5a1-828e5a139514",
+      "fullStatement": "Problem Solving & Root Cause Analysis",
+      "humanCodingScheme": "2. Problem Solving & Root Cause Analysis",
+      "CFItemType": "Skill",
+      "CFItemTypeURI": {
+        "title": "Skill",
+        "identifier": "62ddb866-969a-4447-b8aa-6961c0f43646",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/62ddb866-969a-4447-b8aa-6961c0f43646"
+      },
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T22:18:43+00:00"
+    },
+    {
+      "identifier": "70838e99-3249-4e4e-80ab-9e770444f13b",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/70838e99-3249-4e4e-80ab-9e770444f13b",
+      "fullStatement": "Can identify problems and document them clearly.",
+      "humanCodingScheme": "2.1 Basic",
+      "CFItemType": "Proficiency Level",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T22:19:13+00:00",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      }
+    },
+    {
+      "identifier": "819b362f-0799-48c5-af88-5ef2429e7a16",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/819b362f-0799-48c5-af88-5ef2429e7a16",
+      "fullStatement": "Applies tools like 5 Whys or Ishikawa diagrams.",
+      "humanCodingScheme": "2.2 Intermediate",
+      "CFItemType": "Proficiency Level",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T22:19:38+00:00",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      }
+    },
+    {
+      "identifier": "857bcfde-de9b-4dd8-a169-a097b7ba2414",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/857bcfde-de9b-4dd8-a169-a097b7ba2414",
+      "fullStatement": "Facilitates cross-functional RCA sessions and develops corrective actions.",
+      "humanCodingScheme": "2.3 Advanced",
+      "CFItemType": "Proficiency Level",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T22:20:12+00:00",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      }
+    },
+    {
+      "identifier": "2660ed13-3c69-4f9a-a616-49fa5f5b73d0",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/2660ed13-3c69-4f9a-a616-49fa5f5b73d0",
+      "fullStatement": "Develops systematic RCA approaches and mentors teams in advanced methods.",
+      "humanCodingScheme": "2.4 Expert",
+      "CFItemType": "Proficiency Level",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T22:20:31+00:00",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      }
+    },
+    {
+      "identifier": "78156943-610b-40ce-9590-bfa6f8bc0914",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/78156943-610b-40ce-9590-bfa6f8bc0914",
+      "fullStatement": "Process Mapping & Standardization",
+      "humanCodingScheme": "3. Process Mapping & Standardization",
+      "CFItemType": "Skill",
+      "CFItemTypeURI": {
+        "title": "Skill",
+        "identifier": "62ddb866-969a-4447-b8aa-6961c0f43646",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/62ddb866-969a-4447-b8aa-6961c0f43646"
+      },
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T22:21:17+00:00"
+    },
+    {
+      "identifier": "d9315b3c-0079-4f43-8ce7-cd99fff7c2da",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/d9315b3c-0079-4f43-8ce7-cd99fff7c2da",
+      "fullStatement": "Able to follow documented processes.",
+      "humanCodingScheme": "3.1 Basic",
+      "CFItemType": "Proficiency Level",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T22:21:48+00:00",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      }
+    },
+    {
+      "identifier": "c8e1089a-2ed5-4d77-80a4-55ad4f657a72",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/c8e1089a-2ed5-4d77-80a4-55ad4f657a72",
+      "fullStatement": "Creates and interprets flowcharts, SIPOC, and value stream maps.",
+      "humanCodingScheme": "3.2 Intermediate",
+      "CFItemType": "Proficiency Level",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T22:22:20+00:00",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      }
+    },
+    {
+      "identifier": "ad2ab664-3686-4b68-a50e-f61ef6097b8d",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/ad2ab664-3686-4b68-a50e-f61ef6097b8d",
+      "fullStatement": "Leads process mapping workshops and standard work development.",
+      "humanCodingScheme": "3.3 Advanced",
+      "CFItemType": "Proficiency Level",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T22:22:37+00:00",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      }
+    },
+    {
+      "identifier": "31f3a7e8-2fb9-4ce7-be75-7fd032266b2e",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/31f3a7e8-2fb9-4ce7-be75-7fd032266b2e",
+      "fullStatement": "Optimizes and re-engineers processes organization-wide.",
+      "humanCodingScheme": "3.4 Expert",
+      "CFItemType": "Proficiency Level",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-24T22:22:56+00:00",
+      "CFItemTypeURI": {
+        "title": "Proficiency Level",
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e"
+      }
+    },
+    {
+      "identifier": "9126021a-8e4a-488c-9350-139c7f790ad0",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/9126021a-8e4a-488c-9350-139c7f790ad0",
+      "fullStatement": "Continuous Improvement Mindset",
+      "humanCodingScheme": "4. Continuous Improvement Mindset",
+      "CFItemType": "Skill",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-25T03:47:46+00:00",
+      "CFItemTypeURI": {
+        "title": "Skill",
+        "identifier": "62ddb866-969a-4447-b8aa-6961c0f43646",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/62ddb866-969a-4447-b8aa-6961c0f43646"
+      }
+    },
+    {
+      "identifier": "d23647f6-7394-419a-a010-a61cf3590c7c",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/d23647f6-7394-419a-a010-a61cf3590c7c",
+      "fullStatement": "Data-Driven Decision Making",
+      "humanCodingScheme": "5. Data-Driven Decision Making",
+      "CFItemType": "Skill",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-25T03:48:12+00:00",
+      "CFItemTypeURI": {
+        "title": "Skill",
+        "identifier": "62ddb866-969a-4447-b8aa-6961c0f43646",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/62ddb866-969a-4447-b8aa-6961c0f43646"
+      }
+    },
+    {
+      "identifier": "ae2ccd14-c042-46c1-993d-9e1963fe67ea",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/ae2ccd14-c042-46c1-993d-9e1963fe67ea",
+      "fullStatement": "Cross-Functional Collaboration",
+      "humanCodingScheme": "6. Cross-Functional Collaboration",
+      "CFItemType": "Skill",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-25T03:48:52+00:00",
+      "CFItemTypeURI": {
+        "title": "Skill",
+        "identifier": "62ddb866-969a-4447-b8aa-6961c0f43646",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/62ddb866-969a-4447-b8aa-6961c0f43646"
+      }
+    },
+    {
+      "identifier": "570f0893-a8e1-46c1-990b-1a9e3127c9c6",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/570f0893-a8e1-46c1-990b-1a9e3127c9c6",
+      "fullStatement": "Change Facilitation",
+      "humanCodingScheme": "7. Change Facilitation",
+      "CFItemType": "Skill",
+      "language": "en",
+      "lastChangeDateTime": "2025-03-25T03:49:25+00:00",
+      "CFItemTypeURI": {
+        "title": "Skill",
+        "identifier": "62ddb866-969a-4447-b8aa-6961c0f43646",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/62ddb866-969a-4447-b8aa-6961c0f43646"
+      }
+    }
+  ],
+  "CFAssociations": [
+    {
+      "identifier": "901f7168-b429-4bac-aed4-34b31b101912",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/901f7168-b429-4bac-aed4-34b31b101912",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "Welding Skills Weldi…",
+        "identifier": "867bd31f-fff0-4370-942a-f70518ee3979",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/867bd31f-fff0-4370-942a-f70518ee3979"
+      },
+      "destinationNodeURI": {
+        "title": "Job Skills Taxonomy",
+        "identifier": "bc8701cb-5a52-4886-8bc7-c8eb04df96ef",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFDocuments/bc8701cb-5a52-4886-8bc7-c8eb04df96ef"
+      },
+      "sequenceNumber": 1,
+      "lastChangeDateTime": "2025-03-17T21:20:27+00:00"
+    },
+    {
+      "identifier": "72558ee8-5d45-458f-825a-dd06b0280bd1",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/72558ee8-5d45-458f-825a-dd06b0280bd1",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "Technical Welding Te…",
+        "identifier": "bda18592-1d43-4760-9c02-2afcca7ad6f9",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/bda18592-1d43-4760-9c02-2afcca7ad6f9"
+      },
+      "destinationNodeURI": {
+        "title": "Welding Skills Weldi…",
+        "identifier": "867bd31f-fff0-4370-942a-f70518ee3979",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/867bd31f-fff0-4370-942a-f70518ee3979"
+      },
+      "sequenceNumber": 1,
+      "lastChangeDateTime": "2025-03-17T21:21:30+00:00"
+    },
+    {
+      "identifier": "39217329-2867-4d76-90d3-81972f3867f9",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/39217329-2867-4d76-90d3-81972f3867f9",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "1-Low Proficiency Un…",
+        "identifier": "b66b41ff-0926-4255-97a7-9941350b4c8e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/b66b41ff-0926-4255-97a7-9941350b4c8e"
+      },
+      "destinationNodeURI": {
+        "title": "Technical Welding Sk…",
+        "identifier": "bda18592-1d43-4760-9c02-2afcca7ad6f9",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/bda18592-1d43-4760-9c02-2afcca7ad6f9"
+      },
+      "sequenceNumber": 1,
+      "lastChangeDateTime": "2025-03-17T21:23:53+00:00"
+    },
+    {
+      "identifier": "b26b30f4-e084-443a-ab97-7778bbdb049c",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/b26b30f4-e084-443a-ab97-7778bbdb049c",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "2-Moderate Proficien…",
+        "identifier": "c6b36958-4aac-4973-b0a0-2853f3bae55a",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/c6b36958-4aac-4973-b0a0-2853f3bae55a"
+      },
+      "destinationNodeURI": {
+        "title": "Technical Welding Sk…",
+        "identifier": "bda18592-1d43-4760-9c02-2afcca7ad6f9",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/bda18592-1d43-4760-9c02-2afcca7ad6f9"
+      },
+      "sequenceNumber": 2,
+      "lastChangeDateTime": "2025-03-17T21:24:25+00:00"
+    },
+    {
+      "identifier": "c818bb2d-5942-4703-91f9-fee757abb348",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/c818bb2d-5942-4703-91f9-fee757abb348",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "3-Mastery Produces h…",
+        "identifier": "37e034f8-deca-410b-8764-15f7097c8bf8",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/37e034f8-deca-410b-8764-15f7097c8bf8"
+      },
+      "destinationNodeURI": {
+        "title": "Technical Welding Sk…",
+        "identifier": "bda18592-1d43-4760-9c02-2afcca7ad6f9",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/bda18592-1d43-4760-9c02-2afcca7ad6f9"
+      },
+      "sequenceNumber": 3,
+      "lastChangeDateTime": "2025-03-17T21:24:50+00:00"
+    },
+    {
+      "identifier": "fb8dd409-1824-4f5a-94bd-5438905551aa",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/fb8dd409-1824-4f5a-94bd-5438905551aa",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "4-High Proficiency I…",
+        "identifier": "3079c837-ff49-4f7f-b67a-243348641268",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/3079c837-ff49-4f7f-b67a-243348641268"
+      },
+      "destinationNodeURI": {
+        "title": "Technical Welding Sk…",
+        "identifier": "bda18592-1d43-4760-9c02-2afcca7ad6f9",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/bda18592-1d43-4760-9c02-2afcca7ad6f9"
+      },
+      "sequenceNumber": 4,
+      "lastChangeDateTime": "2025-03-17T21:25:10+00:00"
+    },
+    {
+      "identifier": "f02d4369-f901-4d93-9d88-0fd42c788551",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/f02d4369-f901-4d93-9d88-0fd42c788551",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "Blueprint Reading Bl…",
+        "identifier": "6fbd2f5c-0ba7-4700-82df-10ddd8112131",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/6fbd2f5c-0ba7-4700-82df-10ddd8112131"
+      },
+      "destinationNodeURI": {
+        "title": "Welding Skills Weldi…",
+        "identifier": "867bd31f-fff0-4370-942a-f70518ee3979",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/867bd31f-fff0-4370-942a-f70518ee3979"
+      },
+      "sequenceNumber": 2,
+      "lastChangeDateTime": "2025-03-17T21:25:58+00:00"
+    },
+    {
+      "identifier": "998c19c1-d9ab-479c-81fa-2c3df5b2deda",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/998c19c1-d9ab-479c-81fa-2c3df5b2deda",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "1-Low Proficiency (B…",
+        "identifier": "e7d9da3a-264f-4735-b074-2d17c4d55fc0",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/e7d9da3a-264f-4735-b074-2d17c4d55fc0"
+      },
+      "destinationNodeURI": {
+        "title": "Blueprint Reading Bl…",
+        "identifier": "6fbd2f5c-0ba7-4700-82df-10ddd8112131",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/6fbd2f5c-0ba7-4700-82df-10ddd8112131"
+      },
+      "sequenceNumber": 1,
+      "lastChangeDateTime": "2025-03-17T21:27:46+00:00"
+    },
+    {
+      "identifier": "f038d433-42b9-46d0-9130-b5cb8530fd59",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/f038d433-42b9-46d0-9130-b5cb8530fd59",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "2 - Moderate Profici…",
+        "identifier": "71f81697-5eed-48d1-ab96-c11352e056eb",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/71f81697-5eed-48d1-ab96-c11352e056eb"
+      },
+      "destinationNodeURI": {
+        "title": "Blueprint Reading Bl…",
+        "identifier": "6fbd2f5c-0ba7-4700-82df-10ddd8112131",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/6fbd2f5c-0ba7-4700-82df-10ddd8112131"
+      },
+      "sequenceNumber": 2,
+      "lastChangeDateTime": "2025-03-24T19:52:07+00:00"
+    },
+    {
+      "identifier": "3bcafb68-10c2-4f27-937b-63c59dd73c2c",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/3bcafb68-10c2-4f27-937b-63c59dd73c2c",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "3 - Mastery (BP) Acc…",
+        "identifier": "35624d89-14bb-4f5a-9c90-18bdabe82eb2",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/35624d89-14bb-4f5a-9c90-18bdabe82eb2"
+      },
+      "destinationNodeURI": {
+        "title": "Blueprint Reading Bl…",
+        "identifier": "6fbd2f5c-0ba7-4700-82df-10ddd8112131",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/6fbd2f5c-0ba7-4700-82df-10ddd8112131"
+      },
+      "sequenceNumber": 3,
+      "lastChangeDateTime": "2025-03-24T19:52:32+00:00"
+    },
+    {
+      "identifier": "db05a46b-6544-494a-9d5f-e4ee9513786e",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/db05a46b-6544-494a-9d5f-e4ee9513786e",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "4 - High Proficiency…",
+        "identifier": "d0c22c81-234c-46d7-9ec1-195098d2dacb",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/d0c22c81-234c-46d7-9ec1-195098d2dacb"
+      },
+      "destinationNodeURI": {
+        "title": "Blueprint Reading Bl…",
+        "identifier": "6fbd2f5c-0ba7-4700-82df-10ddd8112131",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/6fbd2f5c-0ba7-4700-82df-10ddd8112131"
+      },
+      "sequenceNumber": 4,
+      "lastChangeDateTime": "2025-03-24T19:52:56+00:00"
+    },
+    {
+      "identifier": "5d40f883-01b8-4bcf-8e70-d52b0e9a4fe3",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/5d40f883-01b8-4bcf-8e70-d52b0e9a4fe3",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "Attention to Detail …",
+        "identifier": "e97aca1f-9a86-402b-a269-5ec5ac8a80b8",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/e97aca1f-9a86-402b-a269-5ec5ac8a80b8"
+      },
+      "destinationNodeURI": {
+        "title": "Welding Skills Weldi…",
+        "identifier": "867bd31f-fff0-4370-942a-f70518ee3979",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/867bd31f-fff0-4370-942a-f70518ee3979"
+      },
+      "sequenceNumber": 3,
+      "lastChangeDateTime": "2025-03-24T19:53:30+00:00"
+    },
+    {
+      "identifier": "36215326-8f10-412f-8aa9-45ccc3310102",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/36215326-8f10-412f-8aa9-45ccc3310102",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "1 - Low Proficiency …",
+        "identifier": "b5de4892-0650-4372-a080-d3f016658c09",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/b5de4892-0650-4372-a080-d3f016658c09"
+      },
+      "destinationNodeURI": {
+        "title": "Attention to Detail …",
+        "identifier": "e97aca1f-9a86-402b-a269-5ec5ac8a80b8",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/e97aca1f-9a86-402b-a269-5ec5ac8a80b8"
+      },
+      "sequenceNumber": 1,
+      "lastChangeDateTime": "2025-03-24T19:54:22+00:00"
+    },
+    {
+      "identifier": "d438da71-6831-474a-81fe-8b5b5424153b",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/d438da71-6831-474a-81fe-8b5b5424153b",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "2 - Moderate Profici…",
+        "identifier": "01e675cf-ed3f-4a3b-8494-1ff67641aa76",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/01e675cf-ed3f-4a3b-8494-1ff67641aa76"
+      },
+      "destinationNodeURI": {
+        "title": "Attention to Detail …",
+        "identifier": "e97aca1f-9a86-402b-a269-5ec5ac8a80b8",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/e97aca1f-9a86-402b-a269-5ec5ac8a80b8"
+      },
+      "sequenceNumber": 2,
+      "lastChangeDateTime": "2025-03-24T19:54:46+00:00"
+    },
+    {
+      "identifier": "513ecf2c-3ba5-492b-98cb-97ab5932bbad",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/513ecf2c-3ba5-492b-98cb-97ab5932bbad",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "3 - Mastery (AD) Con…",
+        "identifier": "6559d3b6-b1e1-45bf-b7e0-c975c7d74729",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/6559d3b6-b1e1-45bf-b7e0-c975c7d74729"
+      },
+      "destinationNodeURI": {
+        "title": "Attention to Detail …",
+        "identifier": "e97aca1f-9a86-402b-a269-5ec5ac8a80b8",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/e97aca1f-9a86-402b-a269-5ec5ac8a80b8"
+      },
+      "sequenceNumber": 3,
+      "lastChangeDateTime": "2025-03-24T19:55:16+00:00"
+    },
+    {
+      "identifier": "c3a01e84-4734-4164-997e-31ad81b5ba09",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/c3a01e84-4734-4164-997e-31ad81b5ba09",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "4 - High Proficiency…",
+        "identifier": "0d1cf500-219d-4c3d-bd2e-fa2353a0a037",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/0d1cf500-219d-4c3d-bd2e-fa2353a0a037"
+      },
+      "destinationNodeURI": {
+        "title": "Attention to Detail …",
+        "identifier": "e97aca1f-9a86-402b-a269-5ec5ac8a80b8",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/e97aca1f-9a86-402b-a269-5ec5ac8a80b8"
+      },
+      "sequenceNumber": 4,
+      "lastChangeDateTime": "2025-03-24T19:55:42+00:00"
+    },
+    {
+      "identifier": "48ecb7ac-6ec6-421f-aa4d-3806703718a1",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/48ecb7ac-6ec6-421f-aa4d-3806703718a1",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "Business Process Ski…",
+        "identifier": "afcdb7e4-5804-41e6-930c-d52b7a4bad70",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/afcdb7e4-5804-41e6-930c-d52b7a4bad70"
+      },
+      "destinationNodeURI": {
+        "title": "Job Skills Taxonomy",
+        "identifier": "bc8701cb-5a52-4886-8bc7-c8eb04df96ef",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFDocuments/bc8701cb-5a52-4886-8bc7-c8eb04df96ef"
+      },
+      "sequenceNumber": 2,
+      "lastChangeDateTime": "2025-03-24T22:13:51+00:00"
+    },
+    {
+      "identifier": "1b5450e2-bbe7-461b-b74b-5a025c668d37",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/1b5450e2-bbe7-461b-b74b-5a025c668d37",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "1. Lean Six Sigma Kn…",
+        "identifier": "75ad1f62-1e13-49e4-bd34-539970e47a45",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/75ad1f62-1e13-49e4-bd34-539970e47a45"
+      },
+      "destinationNodeURI": {
+        "title": "Business Process Ski…",
+        "identifier": "afcdb7e4-5804-41e6-930c-d52b7a4bad70",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/afcdb7e4-5804-41e6-930c-d52b7a4bad70"
+      },
+      "sequenceNumber": 1,
+      "lastChangeDateTime": "2025-03-24T22:15:01+00:00"
+    },
+    {
+      "identifier": "e1099f45-7e21-4ef5-9ff2-a3c7c8ee8356",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/e1099f45-7e21-4ef5-9ff2-a3c7c8ee8356",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "1.1 Basic Understand…",
+        "identifier": "b24ab56c-6b49-42ed-be34-49be3daf2bcc",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/b24ab56c-6b49-42ed-be34-49be3daf2bcc"
+      },
+      "destinationNodeURI": {
+        "title": "Lean Six Sigma Knowl…",
+        "identifier": "75ad1f62-1e13-49e4-bd34-539970e47a45",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/75ad1f62-1e13-49e4-bd34-539970e47a45"
+      },
+      "sequenceNumber": 1,
+      "lastChangeDateTime": "2025-03-24T22:16:22+00:00"
+    },
+    {
+      "identifier": "fc36c6bc-c6bf-475e-bc13-3d7c8218f763",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/fc36c6bc-c6bf-475e-bc13-3d7c8218f763",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "1.2 Intermediate Can…",
+        "identifier": "5750bab0-059c-4000-9a34-1cfd8cff373b",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/5750bab0-059c-4000-9a34-1cfd8cff373b"
+      },
+      "destinationNodeURI": {
+        "title": "Lean Six Sigma Knowl…",
+        "identifier": "75ad1f62-1e13-49e4-bd34-539970e47a45",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/75ad1f62-1e13-49e4-bd34-539970e47a45"
+      },
+      "sequenceNumber": 2,
+      "lastChangeDateTime": "2025-03-24T22:17:00+00:00"
+    },
+    {
+      "identifier": "3ce65695-31c6-450b-86fd-511d2919a982",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/3ce65695-31c6-450b-86fd-511d2919a982",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "1.3 Advanced Leads C…",
+        "identifier": "be39b8c0-a085-4173-8924-23b788f83a80",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/be39b8c0-a085-4173-8924-23b788f83a80"
+      },
+      "destinationNodeURI": {
+        "title": "Lean Six Sigma Knowl…",
+        "identifier": "75ad1f62-1e13-49e4-bd34-539970e47a45",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/75ad1f62-1e13-49e4-bd34-539970e47a45"
+      },
+      "sequenceNumber": 3,
+      "lastChangeDateTime": "2025-03-24T22:17:20+00:00"
+    },
+    {
+      "identifier": "f867a348-d00b-4889-8239-0d2060e05b99",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/f867a348-d00b-4889-8239-0d2060e05b99",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "1.4 Expert Trains ot…",
+        "identifier": "050f531d-46c0-46bc-b8db-961dfe21b85e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/050f531d-46c0-46bc-b8db-961dfe21b85e"
+      },
+      "destinationNodeURI": {
+        "title": "Lean Six Sigma Knowl…",
+        "identifier": "75ad1f62-1e13-49e4-bd34-539970e47a45",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/75ad1f62-1e13-49e4-bd34-539970e47a45"
+      },
+      "sequenceNumber": 4,
+      "lastChangeDateTime": "2025-03-24T22:17:43+00:00"
+    },
+    {
+      "identifier": "bfb74118-b293-4aa9-80dd-416f10a5bc4e",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/bfb74118-b293-4aa9-80dd-416f10a5bc4e",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "2. Problem Solving &…",
+        "identifier": "bb89394b-de18-4a37-a5a1-828e5a139514",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/bb89394b-de18-4a37-a5a1-828e5a139514"
+      },
+      "destinationNodeURI": {
+        "title": "Business Process Ski…",
+        "identifier": "afcdb7e4-5804-41e6-930c-d52b7a4bad70",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/afcdb7e4-5804-41e6-930c-d52b7a4bad70"
+      },
+      "sequenceNumber": 2,
+      "lastChangeDateTime": "2025-03-24T22:18:43+00:00"
+    },
+    {
+      "identifier": "ebf6412c-1ca5-403f-a941-3886a1f99669",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/ebf6412c-1ca5-403f-a941-3886a1f99669",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "2.1 Basic Can identi…",
+        "identifier": "70838e99-3249-4e4e-80ab-9e770444f13b",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/70838e99-3249-4e4e-80ab-9e770444f13b"
+      },
+      "destinationNodeURI": {
+        "title": "2. Problem Solving &…",
+        "identifier": "bb89394b-de18-4a37-a5a1-828e5a139514",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/bb89394b-de18-4a37-a5a1-828e5a139514"
+      },
+      "sequenceNumber": 1,
+      "lastChangeDateTime": "2025-03-24T22:19:13+00:00"
+    },
+    {
+      "identifier": "3a59baa3-1490-4849-bcbe-dbf4a71a51e9",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/3a59baa3-1490-4849-bcbe-dbf4a71a51e9",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "2.2 Intermediate App…",
+        "identifier": "819b362f-0799-48c5-af88-5ef2429e7a16",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/819b362f-0799-48c5-af88-5ef2429e7a16"
+      },
+      "destinationNodeURI": {
+        "title": "2. Problem Solving &…",
+        "identifier": "bb89394b-de18-4a37-a5a1-828e5a139514",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/bb89394b-de18-4a37-a5a1-828e5a139514"
+      },
+      "sequenceNumber": 2,
+      "lastChangeDateTime": "2025-03-24T22:19:38+00:00"
+    },
+    {
+      "identifier": "c4e9b2f8-ab46-46f8-af60-ea17f0993717",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/c4e9b2f8-ab46-46f8-af60-ea17f0993717",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "2.3 Advanced Facilit…",
+        "identifier": "857bcfde-de9b-4dd8-a169-a097b7ba2414",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/857bcfde-de9b-4dd8-a169-a097b7ba2414"
+      },
+      "destinationNodeURI": {
+        "title": "2. Problem Solving &…",
+        "identifier": "bb89394b-de18-4a37-a5a1-828e5a139514",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/bb89394b-de18-4a37-a5a1-828e5a139514"
+      },
+      "sequenceNumber": 3,
+      "lastChangeDateTime": "2025-03-24T22:20:12+00:00"
+    },
+    {
+      "identifier": "0392befd-eeb4-418c-999f-05dc0729f3d4",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/0392befd-eeb4-418c-999f-05dc0729f3d4",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "2.4 Expert Develops …",
+        "identifier": "2660ed13-3c69-4f9a-a616-49fa5f5b73d0",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/2660ed13-3c69-4f9a-a616-49fa5f5b73d0"
+      },
+      "destinationNodeURI": {
+        "title": "2. Problem Solving &…",
+        "identifier": "bb89394b-de18-4a37-a5a1-828e5a139514",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/bb89394b-de18-4a37-a5a1-828e5a139514"
+      },
+      "sequenceNumber": 4,
+      "lastChangeDateTime": "2025-03-24T22:20:31+00:00"
+    },
+    {
+      "identifier": "5c211a7d-28da-4dd1-abd5-f52f012e1cff",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/5c211a7d-28da-4dd1-abd5-f52f012e1cff",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "3. Process Mapping &…",
+        "identifier": "78156943-610b-40ce-9590-bfa6f8bc0914",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/78156943-610b-40ce-9590-bfa6f8bc0914"
+      },
+      "destinationNodeURI": {
+        "title": "Business Process Ski…",
+        "identifier": "afcdb7e4-5804-41e6-930c-d52b7a4bad70",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/afcdb7e4-5804-41e6-930c-d52b7a4bad70"
+      },
+      "sequenceNumber": 3,
+      "lastChangeDateTime": "2025-03-24T22:21:17+00:00"
+    },
+    {
+      "identifier": "42d8e6e7-c3ca-48ea-935c-c2042781537a",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/42d8e6e7-c3ca-48ea-935c-c2042781537a",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "3.1 Basic Able to fo…",
+        "identifier": "d9315b3c-0079-4f43-8ce7-cd99fff7c2da",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/d9315b3c-0079-4f43-8ce7-cd99fff7c2da"
+      },
+      "destinationNodeURI": {
+        "title": "3. Process Mapping &…",
+        "identifier": "78156943-610b-40ce-9590-bfa6f8bc0914",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/78156943-610b-40ce-9590-bfa6f8bc0914"
+      },
+      "sequenceNumber": 1,
+      "lastChangeDateTime": "2025-03-24T22:21:48+00:00"
+    },
+    {
+      "identifier": "7a6a5683-cf24-471f-b19b-5324584ecb17",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/7a6a5683-cf24-471f-b19b-5324584ecb17",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "3.2 Intermediate Cre…",
+        "identifier": "c8e1089a-2ed5-4d77-80a4-55ad4f657a72",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/c8e1089a-2ed5-4d77-80a4-55ad4f657a72"
+      },
+      "destinationNodeURI": {
+        "title": "3. Process Mapping &…",
+        "identifier": "78156943-610b-40ce-9590-bfa6f8bc0914",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/78156943-610b-40ce-9590-bfa6f8bc0914"
+      },
+      "sequenceNumber": 2,
+      "lastChangeDateTime": "2025-03-24T22:22:20+00:00"
+    },
+    {
+      "identifier": "6754cea1-cf33-450e-9224-58e6fe9c9197",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/6754cea1-cf33-450e-9224-58e6fe9c9197",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "3.3 Advanced Leads p…",
+        "identifier": "ad2ab664-3686-4b68-a50e-f61ef6097b8d",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/ad2ab664-3686-4b68-a50e-f61ef6097b8d"
+      },
+      "destinationNodeURI": {
+        "title": "3. Process Mapping &…",
+        "identifier": "78156943-610b-40ce-9590-bfa6f8bc0914",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/78156943-610b-40ce-9590-bfa6f8bc0914"
+      },
+      "sequenceNumber": 3,
+      "lastChangeDateTime": "2025-03-24T22:22:37+00:00"
+    },
+    {
+      "identifier": "a554ab21-8159-40e9-8588-8ceb7bdc093f",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/a554ab21-8159-40e9-8588-8ceb7bdc093f",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "3.4 Expert Optimizes…",
+        "identifier": "31f3a7e8-2fb9-4ce7-be75-7fd032266b2e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/31f3a7e8-2fb9-4ce7-be75-7fd032266b2e"
+      },
+      "destinationNodeURI": {
+        "title": "3. Process Mapping &…",
+        "identifier": "78156943-610b-40ce-9590-bfa6f8bc0914",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/78156943-610b-40ce-9590-bfa6f8bc0914"
+      },
+      "sequenceNumber": 4,
+      "lastChangeDateTime": "2025-03-24T22:22:56+00:00"
+    },
+    {
+      "identifier": "772e16eb-6e9b-49c5-88c5-eccab40a2755",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/772e16eb-6e9b-49c5-88c5-eccab40a2755",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "4. Continuous Improv…",
+        "identifier": "9126021a-8e4a-488c-9350-139c7f790ad0",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/9126021a-8e4a-488c-9350-139c7f790ad0"
+      },
+      "destinationNodeURI": {
+        "title": "Business Process Ski…",
+        "identifier": "afcdb7e4-5804-41e6-930c-d52b7a4bad70",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/afcdb7e4-5804-41e6-930c-d52b7a4bad70"
+      },
+      "sequenceNumber": 4,
+      "lastChangeDateTime": "2025-03-25T03:47:46+00:00"
+    },
+    {
+      "identifier": "67c4d66c-7b22-4b9c-8bba-e1f6bf3f13b5",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/67c4d66c-7b22-4b9c-8bba-e1f6bf3f13b5",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "5. Data-Driven Decis…",
+        "identifier": "d23647f6-7394-419a-a010-a61cf3590c7c",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/d23647f6-7394-419a-a010-a61cf3590c7c"
+      },
+      "destinationNodeURI": {
+        "title": "Business Process Ski…",
+        "identifier": "afcdb7e4-5804-41e6-930c-d52b7a4bad70",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/afcdb7e4-5804-41e6-930c-d52b7a4bad70"
+      },
+      "sequenceNumber": 5,
+      "lastChangeDateTime": "2025-03-25T03:47:54+00:00"
+    },
+    {
+      "identifier": "b98782ad-0432-4fee-8609-51b9a1f15f86",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/b98782ad-0432-4fee-8609-51b9a1f15f86",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "6. Cross-Functional …",
+        "identifier": "ae2ccd14-c042-46c1-993d-9e1963fe67ea",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/ae2ccd14-c042-46c1-993d-9e1963fe67ea"
+      },
+      "destinationNodeURI": {
+        "title": "Business Process Ski…",
+        "identifier": "afcdb7e4-5804-41e6-930c-d52b7a4bad70",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/afcdb7e4-5804-41e6-930c-d52b7a4bad70"
+      },
+      "sequenceNumber": 6,
+      "lastChangeDateTime": "2025-03-25T03:48:52+00:00"
+    },
+    {
+      "identifier": "525aafd4-fd52-4cc4-bf85-41d01e5f259b",
+      "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFAssociations/525aafd4-fd52-4cc4-bf85-41d01e5f259b",
+      "associationType": "isChildOf",
+      "originNodeURI": {
+        "title": "7. Change Facilitati…",
+        "identifier": "570f0893-a8e1-46c1-990b-1a9e3127c9c6",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/570f0893-a8e1-46c1-990b-1a9e3127c9c6"
+      },
+      "destinationNodeURI": {
+        "title": "Business Process Ski…",
+        "identifier": "afcdb7e4-5804-41e6-930c-d52b7a4bad70",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItems/afcdb7e4-5804-41e6-930c-d52b7a4bad70"
+      },
+      "sequenceNumber": 7,
+      "lastChangeDateTime": "2025-03-25T03:49:25+00:00"
+    }
+  ],
+  "CFDefinitions": {
+    "CFConcepts": [],
+    "CFSubjects": [],
+    "CFLicenses": [],
+    "CFItemTypes": [
+      {
+        "identifier": "ec4da457-fb82-4238-9efa-15604aeda4fd",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/ec4da457-fb82-4238-9efa-15604aeda4fd",
+        "title": "Skill Category",
+        "description": "Skill Category",
+        "typeCode": "Skill Category",
+        "hierarchyCode": "1",
+        "lastChangeDateTime": "2025-03-17T21:20:27+00:00"
+      },
+      {
+        "identifier": "62ddb866-969a-4447-b8aa-6961c0f43646",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/62ddb866-969a-4447-b8aa-6961c0f43646",
+        "title": "Skill",
+        "description": "Skill",
+        "typeCode": "Skill",
+        "hierarchyCode": "1",
+        "lastChangeDateTime": "2025-03-17T21:21:30+00:00"
+      },
+      {
+        "identifier": "e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "uri": "https://case.1edtech.ims.org/ims/case/v1p0/CFItemTypes/e446bf1c-138d-426c-8a17-3ab5ae19300e",
+        "title": "Proficiency Level",
+        "description": "Proficiency Level",
+        "typeCode": "Proficiency Level",
+        "hierarchyCode": "1",
+        "lastChangeDateTime": "2025-03-17T21:23:53+00:00"
+      }
+    ],
+    "CFAssociationGroupings": []
+  }
+}

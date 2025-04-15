@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('show-json-btn').addEventListener('click', showCompetencyJSON);
     document.getElementById('show-case-json-btn').addEventListener('click', showCompetencyCASEJSON);
     document.getElementById('upload-form').addEventListener('submit', handleCSVUpload);
+    document.getElementById('competency-upload-form').addEventListener('submit', handleCompetencyUpload);
 
     // Load frameworks on page load
     loadFrameworks();
@@ -210,6 +211,18 @@ async function showCompetencyDetails(competencyId) {
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         
         const competency = await response.json();
+
+        // Get associations
+        const associationsResponse = await fetch(`${API_BASE_URL}/associations?source=${competencyId}`);
+        if (!associationsResponse.ok) throw new Error(`HTTP error! Status: ${associationsResponse.status}`);
+        
+        const associations = await associationsResponse.json();
+
+        // Get job roles that require this skill
+        const jobRolesResponse = await fetch(`${API_BASE_URL}/definitions?type=job_role&associatedSkill=${competencyId}`);
+        if (!jobRolesResponse.ok) throw new Error(`HTTP error! Status: ${jobRolesResponse.status}`);
+        
+        const jobRoles = await jobRolesResponse.json();
         
         let levelsHTML = '';
         if (competency.criteria && competency.criteria.length > 0) {
@@ -247,6 +260,58 @@ async function showCompetencyDetails(competencyId) {
             levelsHTML = '<div class="alert alert-info">No proficiency levels defined for this competency.</div>';
         }
 
+        let associationsHTML = '';
+        if (associations.length > 0) {
+            associationsHTML = `
+                <div class="card mb-3">
+                    <div class="card-header bg-light">
+                        <strong>Associated Competencies</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            ${associations.map(assoc => `
+                                <div class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">${assoc.destination.title}</h6>
+                                            <p class="mb-1">${assoc.description || 'No description'}</p>
+                                            <small>Weight: ${assoc.weight || 'N/A'}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        let jobRolesHTML = '';
+        if (jobRoles.length > 0) {
+            jobRolesHTML = `
+                <div class="card mb-3">
+                    <div class="card-header bg-light">
+                        <strong>Required by Job Roles</strong>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            ${jobRoles.map(role => `
+                                <div class="list-group-item">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">${role.title}</h6>
+                                            <p class="mb-1">${role.description || 'No description'}</p>
+                                            <small>Category: ${role.category || 'N/A'}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
         const detailHTML = `
             <div class="card mb-3">
                 <div class="card-header bg-primary text-white">
@@ -266,6 +331,8 @@ async function showCompetencyDetails(competencyId) {
                         <p>${competency.description || 'No description available'}</p>
                     </div>
                     ${levelsHTML}
+                    ${associationsHTML}
+                    ${jobRolesHTML}
                 </div>
             </div>
         `;
@@ -323,5 +390,48 @@ async function deleteFramework(frameworkId) {
     } catch (error) {
         console.error('Error deleting framework:', error);
         alert(`Error deleting framework: ${error.message}`);
+    }
+}
+
+// Handle competency upload to existing framework
+async function handleCompetencyUpload(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const formData = new FormData();
+    const fileInput = document.getElementById('competency-file');
+    const frameworkId = selectedFrameworkId;
+
+    if (!frameworkId) {
+        alert('Please select a framework first');
+        return;
+    }
+
+    formData.append('csvFile', fileInput.files[0]);
+
+    const uploadStatus = document.getElementById('upload-status');
+    uploadStatus.classList.remove('d-none', 'alert-success', 'alert-danger');
+    uploadStatus.innerHTML = 'Uploading and processing...';
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/upload-competencies/${frameworkId}`, {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            uploadStatus.classList.add('alert-success');
+            uploadStatus.innerHTML = `Successfully added ${result.processedCount} competencies to the framework.`;
+            form.reset();
+            // Refresh the competencies list
+            selectFramework(frameworkId);
+        } else {
+            throw new Error(result.message || 'Upload failed');
+        }
+    } catch (error) {
+        uploadStatus.classList.add('alert-danger');
+        uploadStatus.innerHTML = `Error: ${error.message}`;
     }
 } 

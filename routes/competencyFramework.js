@@ -206,10 +206,17 @@ router.delete('/:id', async (req, res) => {
 // Get all competency definitions in a framework
 router.get('/:id/definitions', getFramework, async (req, res) => {
   try {
+    console.log(`Fetching framework with ID: ${req.params.id}`);
+    const framework = await CompetencyFramework.findById(req.params.id);
+    console.log('Framework found:', framework ? framework.name : 'Not found');
+    
     const populatedFramework = await CompetencyFramework.findById(req.params.id)
       .populate('competencyDefinitions');
+    console.log(`Found ${populatedFramework.competencyDefinitions.length} competencies`);
+    
     res.json(populatedFramework.competencyDefinitions);
   } catch (err) {
+    console.error('Error fetching competencies:', err);
     res.status(500).json({ message: err.message });
   }
 });

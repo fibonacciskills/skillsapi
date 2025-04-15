@@ -8,6 +8,8 @@
     "dev": "nodemon apiserver",
     "test": "jest",
     "import": "node utils/importCSV.js",
+    "import-jsa": "node utils/importJSA.js",
+    "import-jsa-roles": "node utils/importJSARoles.js",
     "create-associations": "node utils/createAssociations.js"
   },
   "dependencies": {
