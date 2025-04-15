@@ -5,8 +5,8 @@ const ResourceAssociationSchema = new Schema({
   associationType: {
     type: String,
     required: true,
-    enum: ['INDIRECT_ASSOCIATION'], // According to the diagram
-    default: 'INDIRECT_ASSOCIATION'
+    enum: ['INDIRECT_ASSOCIATION', 'REQUIRES', 'REQUIRED_BY', 'RelatedTo'],
+    default: 'RelatedTo'
   },
   source: {
     type: Schema.Types.ObjectId,

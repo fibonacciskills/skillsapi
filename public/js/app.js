@@ -227,83 +227,141 @@ async function showCompetencyDetails(competencyId) {
                 </div>
 
                 <div class="mt-4">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h3>Proficiency Scales</h3>
-                        <button class="btn btn-success" onclick="showAddCriterionModal('${competencyId}')">
-                            Add Proficiency Scale
-                        </button>
-                    </div>
-                    ${competency.criteria && competency.criteria.length > 0 ? `
-                        <div class="accordion" id="criteriaAccordion">
-                            ${competency.criteria.map((criterion, index) => `
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button ${index === 0 ? '' : 'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#criterion${criterion.id}">
-                                            ${criterion.name}
-                                        </button>
-                                    </h2>
-                                    <div id="criterion${criterion.id}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" data-bs-parent="#criteriaAccordion">
-                                        <div class="accordion-body">
-                                            <p class="mb-3">${criterion.description || 'No description available'}</p>
-                                            
-                                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <h4>Proficiency Levels</h4>
-                                                <button class="btn btn-success btn-sm" onclick="showAddLevelModal('${criterion._id}')">
-                                                    Add Level
+                    <ul class="nav nav-tabs" id="competencyTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="levels-tab" data-bs-toggle="tab" data-bs-target="#levels" type="button" role="tab">
+                                Proficiency Levels
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="mappings-tab" data-bs-toggle="tab" data-bs-target="#mappings" type="button" role="tab">
+                                Mappings
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="competencyTabContent">
+                        <div class="tab-pane fade show active" id="levels" role="tabpanel">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h3>Proficiency Scales</h3>
+                                <button class="btn btn-success" onclick="showAddCriterionModal('${competencyId}')">
+                                    Add Proficiency Scale
+                                </button>
+                            </div>
+                            
+                            ${competency.criteria && competency.criteria.length > 0 ? `
+                                <div class="accordion" id="criteriaAccordion">
+                                    ${competency.criteria.map((criterion, index) => `
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button ${index === 0 ? '' : 'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#criterion${criterion.id}">
+                                                    ${criterion.name}
                                                 </button>
-                                            </div>
-                                            
-                                            ${criterion.levels && criterion.levels.length > 0 ? `
-                                                <div class="table-responsive">
-                                                    <table class="table table-bordered">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Level</th>
-                                                                <th>Description</th>
-                                                                <th>Examples</th>
-                                                                <th>Actions</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            ${criterion.levels.sort((a, b) => a.level - b.level).map(level => `
-                                                                <tr>
-                                                                    <td>${level.level}</td>
-                                                                    <td>
-                                                                        <div class="editable" data-field="description" data-level-id="${level._id}">
-                                                                            ${level.description}
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="editable" data-field="examples" data-level-id="${level._id}">
-                                                                            ${level.examples && level.examples.length > 0 ? `
-                                                                                <ul class="mb-0">
-                                                                                    ${level.examples.map(example => `
-                                                                                        <li>${example}</li>
-                                                                                    `).join('')}
-                                                                                </ul>
-                                                                            ` : 'No examples available'}
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <button class="btn btn-sm btn-primary me-1 save-level-btn" data-level-id="${level._id}" style="display: none;">
-                                                                            Save
-                                                                        </button>
-                                                                        <button class="btn btn-sm btn-danger" onclick="deleteLevel('${level._id}')">
-                                                                            Delete
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                            `).join('')}
-                                                        </tbody>
-                                                    </table>
+                                            </h2>
+                                            <div id="criterion${criterion.id}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" data-bs-parent="#criteriaAccordion">
+                                                <div class="accordion-body">
+                                                    <p class="mb-3">${criterion.description || 'No description available'}</p>
+                                                    
+                                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                                        <h4>Proficiency Levels</h4>
+                                                        <button class="btn btn-success btn-sm" onclick="showAddLevelModal('${criterion._id}')">
+                                                            Add Level
+                                                        </button>
+                                                    </div>
+                                                    
+                                                    ${criterion.levels && criterion.levels.length > 0 ? `
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Level</th>
+                                                                        <th>Description</th>
+                                                                        <th>Examples</th>
+                                                                        <th>Actions</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    ${criterion.levels.map(level => `
+                                                                        <tr>
+                                                                            <td>${level.level}</td>
+                                                                            <td>
+                                                                                <div class="editable" data-field="description" data-level-id="${level._id}">
+                                                                                    ${level.description}
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <div class="editable" data-field="examples" data-level-id="${level._id}">
+                                                                                    ${level.examples && level.examples.length > 0 ? `
+                                                                                        <ul class="mb-0">
+                                                                                            ${level.examples.map(example => `
+                                                                                                <li>${example}</li>
+                                                                                            `).join('')}
+                                                                                        </ul>
+                                                                                    ` : 'No examples available'}
+                                                                                </div>
+                                                                            </td>
+                                                                            <td>
+                                                                                <button class="btn btn-sm btn-primary me-1 save-level-btn" data-level-id="${level._id}" style="display: none;">
+                                                                                    Save
+                                                                                </button>
+                                                                                <button class="btn btn-sm btn-danger" onclick="deleteLevel('${level._id}')">
+                                                                                    Delete
+                                                                                </button>
+                                                                            </td>
+                                                                        </tr>
+                                                                    `).join('')}
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    ` : '<p>No levels defined yet.</p>'}
                                                 </div>
-                                            ` : '<p>No levels defined yet.</p>'}
+                                            </div>
                                         </div>
-                                    </div>
+                                    `).join('')}
                                 </div>
-                            `).join('')}
+                            ` : '<p>No proficiency scales defined yet.</p>'}
                         </div>
-                    ` : '<p>No proficiency scales defined yet.</p>'}
+
+                        <div class="tab-pane fade" id="mappings" role="tabpanel">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h3>Mappings</h3>
+                                <button class="btn btn-success" onclick="showAddMappingModal('${competencyId}')">
+                                    Add Mapping
+                                </button>
+                            </div>
+                            
+                            ${competency.resourceAssociations && competency.resourceAssociations.length > 0 ? `
+                                <div class="table-responsive">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Type</th>
+                                                <th>Related Competency</th>
+                                                <th>Description</th>
+                                                <th>Weight</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            ${competency.resourceAssociations.map(assoc => `
+                                                <tr>
+                                                    <td>${assoc.associationType}</td>
+                                                    <td>${assoc.source._id === competencyId ? assoc.destination.title : assoc.source.title}</td>
+                                                    <td>${assoc.description || 'No description'}</td>
+                                                    <td>${assoc.weight}</td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-danger" onclick="deleteMapping('${assoc._id}')">
+                                                            Delete
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            `).join('')}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            ` : '<p>No mappings defined yet.</p>'}
+                        </div>
+                    </div>
                 </div>
             </div>
         `;
@@ -842,5 +900,162 @@ async function deleteLevel(levelId) {
     } catch (error) {
         console.error('Error deleting level:', error);
         alert('Failed to delete level: ' + error.message);
+    }
+}
+
+async function showAddMappingModal(competencyId) {
+    try {
+        // Get all frameworks
+        const frameworkResponse = await fetch(`${API_BASE_URL}/frameworks`);
+        if (!frameworkResponse.ok) throw new Error('Failed to fetch frameworks');
+        const frameworks = await frameworkResponse.json();
+
+        const modalHtml = `
+            <div class="modal fade" id="addMappingModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Add Mapping (Related To)</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="add-mapping-form">
+                                <div class="mb-3">
+                                    <label for="target-framework" class="form-label">Target Framework</label>
+                                    <select class="form-select" id="target-framework" required>
+                                        <option value="" selected disabled>Select a framework...</option>
+                                        ${frameworks.map(f => `<option value="${f._id}">${f.name}</option>`).join('')}
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="target-competency" class="form-label">Target Competency</label>
+                                    <select class="form-select" id="target-competency" required disabled>
+                                        <option value="" selected disabled>Select framework first...</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mapping-description" class="form-label">Description (Optional)</label>
+                                    <textarea class="form-control" id="mapping-description" rows="2"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="mapping-weight" class="form-label">Weight</label>
+                                    <input type="number" class="form-control" id="mapping-weight" min="0" max="10" value="1">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" id="save-mapping-btn">Save Mapping</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Add modal to document
+        document.body.insertAdjacentHTML('beforeend', modalHtml);
+        const modalElement = document.getElementById('addMappingModal');
+        const modal = new bootstrap.Modal(modalElement);
+        modal.show();
+
+        const targetFrameworkSelect = document.getElementById('target-framework');
+        const targetCompetencySelect = document.getElementById('target-competency');
+
+        // Event listener for framework selection
+        targetFrameworkSelect.addEventListener('change', async (event) => {
+            const selectedFrameworkId = event.target.value;
+            targetCompetencySelect.innerHTML = '<option value="" selected disabled>Loading...</option>'; // Show loading state
+            targetCompetencySelect.disabled = true;
+
+            if (!selectedFrameworkId) return;
+
+            try {
+                const competencyResponse = await fetch(`${API_BASE_URL}/frameworks/${selectedFrameworkId}/definitions`);
+                if (!competencyResponse.ok) throw new Error('Failed to fetch competencies for selected framework');
+                const competencies = await competencyResponse.json();
+                const filteredCompetencies = competencies.filter(c => c._id !== competencyId); // Exclude current competency
+
+                targetCompetencySelect.innerHTML = '<option value="" selected disabled>Select a competency...</option>';
+                if (filteredCompetencies.length === 0) {
+                    targetCompetencySelect.innerHTML = '<option value="" selected disabled>No other competencies in this framework</option>';
+                } else {
+                    filteredCompetencies.forEach(c => {
+                        targetCompetencySelect.innerHTML += `<option value="${c._id}">${c.title}</option>`;
+                    });
+                    targetCompetencySelect.disabled = false;
+                }
+            } catch (error) {
+                console.error('Error fetching competencies:', error);
+                targetCompetencySelect.innerHTML = '<option value="" selected disabled>Error loading competencies</option>';
+                alert('Error loading competencies: ' + error.message);
+            }
+        });
+
+        // Handle save
+        document.getElementById('save-mapping-btn').addEventListener('click', async () => {
+            const targetFrameworkId = targetFrameworkSelect.value;
+            const targetCompetencyId = targetCompetencySelect.value;
+            const description = document.getElementById('mapping-description').value;
+            const weight = parseInt(document.getElementById('mapping-weight').value);
+
+            if (!targetFrameworkId || !targetCompetencyId) {
+                alert('Please select both a target framework and a target competency.');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/associations`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        source: competencyId, // Current competency is the source
+                        destination: targetCompetencyId, // Selected competency is the destination
+                        description,
+                        weight,
+                        associationType: 'RelatedTo', // Use the new type
+                        framework: targetFrameworkId // Include framework ID
+                    })
+                });
+
+                if (!response.ok) {
+                     const errorData = await response.json();
+                     throw new Error(errorData.message || 'Failed to create mapping');
+                }
+
+                modal.hide();
+                showCompetencyDetails(competencyId); // Refresh the view
+            } catch (error) {
+                console.error('Error creating mapping:', error);
+                alert('Failed to create mapping: ' + error.message);
+            }
+        });
+
+        // Clean up modal when hidden
+        modalElement.addEventListener('hidden.bs.modal', function () {
+            this.remove();
+        });
+
+    } catch (error) {
+        console.error('Error showing add mapping modal:', error);
+        alert('Failed to load mapping form: ' + error.message);
+    }
+}
+
+async function deleteMapping(associationId) {
+    if (!confirm('Are you sure you want to delete this mapping?')) return;
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/associations/${associationId}`, {
+            method: 'DELETE'
+        });
+
+        if (!response.ok) throw new Error('Failed to delete mapping');
+
+        showCompetencyDetails(currentCompetencyId); // Refresh the view
+    } catch (error) {
+        console.error('Error deleting mapping:', error);
+        alert('Failed to delete mapping: ' + error.message);
     }
 } 

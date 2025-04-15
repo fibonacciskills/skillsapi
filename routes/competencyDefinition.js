@@ -150,6 +150,13 @@ async function getDefinition(req, res, next) {
           path: 'levels',
           model: 'RubricCriterionLevel'
         }
+      })
+      .populate({
+        path: 'resourceAssociations',
+        populate: [
+          { path: 'source', select: 'title' }, // Populate source competency, only select title
+          { path: 'destination', select: 'title' } // Populate destination competency, only select title
+        ]
       });
     if (definition == null) {
       return res.status(404).json({ message: 'Cannot find competency definition' });
