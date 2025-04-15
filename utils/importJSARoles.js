@@ -80,14 +80,19 @@ async function importJSARoles() {
                         await jobRole.save();
                     }
 
-                    // Create association between job role and skill
-                    let association = await ResourceAssociation.findOne({
+                    // Create bidirectional associations between job role and skill
+                    let association1 = await ResourceAssociation.findOne({
                         source: jobRole._id,
                         destination: skill._id
                     });
 
-                    if (!association) {
-                        association = new ResourceAssociation({
+                    let association2 = await ResourceAssociation.findOne({
+                        source: skill._id,
+                        destination: jobRole._id
+                    });
+
+                    if (!association1) {
+                        association1 = new ResourceAssociation({
                             associationType: 'REQUIRES',
                             source: jobRole._id,
                             destination: skill._id,
@@ -95,17 +100,29 @@ async function importJSARoles() {
                             description: item.fullStatement,
                             weight: 1
                         });
-                        await association.save();
+                        await association1.save();
+                    }
 
-                        // Add association reference to both job role and skill
-                        if (!jobRole.resourceAssociations.includes(association._id)) {
-                            jobRole.resourceAssociations.push(association._id);
-                            await jobRole.save();
-                        }
-                        if (!skill.resourceAssociations.includes(association._id)) {
-                            skill.resourceAssociations.push(association._id);
-                            await skill.save();
-                        }
+                    if (!association2) {
+                        association2 = new ResourceAssociation({
+                            associationType: 'REQUIRED_BY',
+                            source: skill._id,
+                            destination: jobRole._id,
+                            framework: framework._id,
+                            description: item.fullStatement,
+                            weight: 1
+                        });
+                        await association2.save();
+                    }
+
+                    // Add association references to both job role and skill
+                    if (!jobRole.resourceAssociations.includes(association1._id)) {
+                        jobRole.resourceAssociations.push(association1._id);
+                        await jobRole.save();
+                    }
+                    if (!skill.resourceAssociations.includes(association2._id)) {
+                        skill.resourceAssociations.push(association2._id);
+                        await skill.save();
                     }
                 }
             }

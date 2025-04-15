@@ -194,157 +194,125 @@ async function selectFramework(frameworkId) {
 
 // Show competency details in modal
 async function showCompetencyDetails(competencyId) {
-    currentCompetencyId = competencyId;
-    const detailContent = document.getElementById('competency-detail-content');
-    detailContent.innerHTML = `
-        <div class="text-center">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
-    `;
-
-    competencyModalInstance.show();
-
     try {
         const response = await fetch(`${API_BASE_URL}/definitions/${competencyId}`);
-        if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
+        if (!response.ok) throw new Error('Failed to fetch competency details');
         
         const competency = await response.json();
+        currentCompetencyId = competencyId;
 
-        // Get associations
-        const associationsResponse = await fetch(`${API_BASE_URL}/associations?source=${competencyId}`);
-        if (!associationsResponse.ok) throw new Error(`HTTP error! Status: ${associationsResponse.status}`);
-        
-        const associations = await associationsResponse.json();
-
-        // Get job roles that require this skill
-        const jobRolesResponse = await fetch(`${API_BASE_URL}/definitions?type=job_role&associatedSkill=${competencyId}`);
-        if (!jobRolesResponse.ok) throw new Error(`HTTP error! Status: ${jobRolesResponse.status}`);
-        
-        const jobRoles = await jobRolesResponse.json();
-        
-        let levelsHTML = '';
-        if (competency.criteria && competency.criteria.length > 0) {
-            competency.criteria.forEach(criterion => {
-                if (criterion.levels && criterion.levels.length > 0) {
-                    levelsHTML += `
-                        <div class="card mb-3">
-                            <div class="card-header bg-light">
-                                <strong>${criterion.name || 'Proficiency Levels'}</strong>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    ${criterion.levels.map(level => `
-                                        <div class="col-md-12 mb-3">
-                                            <div class="level-badge level-${level.level}">Level ${level.level}</div>
-                                            <h6 class="mt-2">${level.name || `Level ${level.level}`}</h6>
-                                            <p class="mb-2">${level.description || 'No description available'}</p>
-                                            ${level.examples && level.examples.length > 0 ? `
-                                                <div class="examples mt-2">
-                                                    <strong>Examples:</strong>
-                                                    <ul class="mb-0">
-                                                        ${level.examples.map(example => `<li>${example}</li>`).join('')}
-                                                    </ul>
-                                                </div>
-                                            ` : ''}
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                }
-            });
-        } else {
-            levelsHTML = '<div class="alert alert-info">No proficiency levels defined for this competency.</div>';
-        }
-
-        let associationsHTML = '';
-        if (associations.length > 0) {
-            associationsHTML = `
-                <div class="card mb-3">
-                    <div class="card-header bg-light">
-                        <strong>Associated Competencies</strong>
-                    </div>
-                    <div class="card-body">
-                        <div class="list-group">
-                            ${associations.map(assoc => `
-                                <div class="list-group-item">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h6 class="mb-1">${assoc.destination.title}</h6>
-                                            <p class="mb-1">${assoc.description || 'No description'}</p>
-                                            <small>Weight: ${assoc.weight || 'N/A'}</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        let jobRolesHTML = '';
-        if (jobRoles.length > 0) {
-            jobRolesHTML = `
-                <div class="card mb-3">
-                    <div class="card-header bg-light">
-                        <strong>Required by Job Roles</strong>
-                    </div>
-                    <div class="card-body">
-                        <div class="list-group">
-                            ${jobRoles.map(role => `
-                                <div class="list-group-item">
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h6 class="mb-1">${role.title}</h6>
-                                            <p class="mb-1">${role.description || 'No description'}</p>
-                                            <small>Category: ${role.category || 'N/A'}</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        const detailHTML = `
-            <div class="card mb-3">
-                <div class="card-header bg-primary text-white">
-                    <h5>${competency.title}</h5>
-                </div>
-                <div class="card-body">
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <strong>Group:</strong> ${competency.competencyGroup || 'N/A'}
-                        </div>
-                        <div class="col-md-6">
-                            <strong>Category:</strong> ${competency.category || 'N/A'}
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <strong>Description:</strong>
-                        <p>${competency.description || 'No description available'}</p>
-                    </div>
-                    ${levelsHTML}
-                    ${associationsHTML}
-                    ${jobRolesHTML}
-                </div>
-            </div>
-        `;
-
-        detailContent.innerHTML = detailHTML;
-    } catch (error) {
-        console.error('Error loading competency details:', error);
+        const detailContent = document.getElementById('competency-detail-content');
         detailContent.innerHTML = `
-            <div class="alert alert-danger">
-                Error loading competency details: ${error.message}
+            <div class="container mt-4">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#" onclick="showCompetencyList()">Competencies</a></li>
+                        <li class="breadcrumb-item active">${competency.title}</li>
+                    </ol>
+                </nav>
+                
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2>${competency.title}</h2>
+                        <p class="text-muted">${competency.description || 'No description available'}</p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <button class="btn btn-primary" onclick="showEditCompetencyModal('${competencyId}')">
+                            Edit Competency
+                        </button>
+                        <button class="btn btn-danger" onclick="deleteCompetency('${competencyId}')">
+                            Delete Competency
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3>Proficiency Scales</h3>
+                        <button class="btn btn-success" onclick="showAddCriterionModal('${competencyId}')">
+                            Add Proficiency Scale
+                        </button>
+                    </div>
+                    ${competency.criteria && competency.criteria.length > 0 ? `
+                        <div class="accordion" id="criteriaAccordion">
+                            ${competency.criteria.map((criterion, index) => `
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button ${index === 0 ? '' : 'collapsed'}" type="button" data-bs-toggle="collapse" data-bs-target="#criterion${criterion.id}">
+                                            ${criterion.name}
+                                        </button>
+                                    </h2>
+                                    <div id="criterion${criterion.id}" class="accordion-collapse collapse ${index === 0 ? 'show' : ''}" data-bs-parent="#criteriaAccordion">
+                                        <div class="accordion-body">
+                                            <p class="mb-3">${criterion.description || 'No description available'}</p>
+                                            
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <h4>Proficiency Levels</h4>
+                                                <button class="btn btn-success btn-sm" onclick="showAddLevelModal('${criterion._id}')">
+                                                    Add Level
+                                                </button>
+                                            </div>
+                                            
+                                            ${criterion.levels && criterion.levels.length > 0 ? `
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Level</th>
+                                                                <th>Description</th>
+                                                                <th>Examples</th>
+                                                                <th>Actions</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            ${criterion.levels.sort((a, b) => a.level - b.level).map(level => `
+                                                                <tr>
+                                                                    <td>${level.level}</td>
+                                                                    <td>
+                                                                        <div class="editable" data-field="description" data-level-id="${level._id}">
+                                                                            ${level.description}
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div class="editable" data-field="examples" data-level-id="${level._id}">
+                                                                            ${level.examples && level.examples.length > 0 ? `
+                                                                                <ul class="mb-0">
+                                                                                    ${level.examples.map(example => `
+                                                                                        <li>${example}</li>
+                                                                                    `).join('')}
+                                                                                </ul>
+                                                                            ` : 'No examples available'}
+                                                                        </div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <button class="btn btn-sm btn-primary me-1 save-level-btn" data-level-id="${level._id}" style="display: none;">
+                                                                            Save
+                                                                        </button>
+                                                                        <button class="btn btn-sm btn-danger" onclick="deleteLevel('${level._id}')">
+                                                                            Delete
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                            `).join('')}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            ` : '<p>No levels defined yet.</p>'}
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : '<p>No proficiency scales defined yet.</p>'}
+                </div>
             </div>
         `;
+
+        // Show the modal
+        competencyModalInstance.show();
+    } catch (error) {
+        console.error('Error showing competency details:', error);
+        alert('Failed to load competency details: ' + error.message);
     }
 }
 
@@ -433,5 +401,446 @@ async function handleCompetencyUpload(event) {
     } catch (error) {
         uploadStatus.classList.add('alert-danger');
         uploadStatus.innerHTML = `Error: ${error.message}`;
+    }
+}
+
+// Level Management Functions
+async function showAddCriterionModal(competencyId) {
+    const modalHtml = `
+        <div class="modal fade" id="addCriterionModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Proficiency Scale</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="add-criterion-form">
+                            <div class="mb-3">
+                                <label for="criterion-name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="criterion-name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="criterion-description" class="form-label">Description</label>
+                                <textarea class="form-control" id="criterion-description" rows="3"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="save-criterion-btn">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Add modal to document
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    const modal = new bootstrap.Modal(document.getElementById('addCriterionModal'));
+    modal.show();
+
+    // Handle save
+    document.getElementById('save-criterion-btn').addEventListener('click', async () => {
+        const name = document.getElementById('criterion-name').value;
+        const description = document.getElementById('criterion-description').value;
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/criteria`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name,
+                    description,
+                    competencyId
+                })
+            });
+
+            if (!response.ok) throw new Error('Failed to create criterion');
+
+            modal.hide();
+            showCompetencyDetails(competencyId); // Refresh the view
+        } catch (error) {
+            console.error('Error creating criterion:', error);
+            alert('Failed to create criterion: ' + error.message);
+        }
+    });
+
+    // Clean up modal when hidden
+    document.getElementById('addCriterionModal').addEventListener('hidden.bs.modal', function () {
+        this.remove();
+    });
+}
+
+async function showEditCompetencyModal(competencyId) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/definitions/${competencyId}`);
+        if (!response.ok) throw new Error('Failed to fetch competency details');
+        
+        const competency = await response.json();
+
+        const modalHtml = `
+            <div class="modal fade" id="editCompetencyModal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Competency</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="edit-competency-form">
+                                <div class="mb-3">
+                                    <label for="edit-competency-title" class="form-label">Title</label>
+                                    <input type="text" class="form-control" id="edit-competency-title" value="${competency.title}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edit-competency-description" class="form-label">Description</label>
+                                    <textarea class="form-control" id="edit-competency-description" rows="3">${competency.description || ''}</textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edit-competency-category" class="form-label">Category</label>
+                                    <input type="text" class="form-control" id="edit-competency-category" value="${competency.category || ''}">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="edit-competency-group" class="form-label">Group</label>
+                                    <input type="text" class="form-control" id="edit-competency-group" value="${competency.competencyGroup || ''}">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" id="update-competency-btn">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        // Add modal to document
+        document.body.insertAdjacentHTML('beforeend', modalHtml);
+        const modal = new bootstrap.Modal(document.getElementById('editCompetencyModal'));
+        modal.show();
+
+        // Handle update
+        document.getElementById('update-competency-btn').addEventListener('click', async () => {
+            const updatedCompetency = {
+                title: document.getElementById('edit-competency-title').value,
+                description: document.getElementById('edit-competency-description').value,
+                category: document.getElementById('edit-competency-category').value,
+                competencyGroup: document.getElementById('edit-competency-group').value
+            };
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/definitions/${competencyId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(updatedCompetency)
+                });
+
+                if (!response.ok) throw new Error('Failed to update competency');
+
+                modal.hide();
+                showCompetencyDetails(competencyId); // Refresh the view
+            } catch (error) {
+                console.error('Error updating competency:', error);
+                alert('Failed to update competency: ' + error.message);
+            }
+        });
+
+        // Clean up modal when hidden
+        document.getElementById('editCompetencyModal').addEventListener('hidden.bs.modal', function () {
+            this.remove();
+        });
+
+    } catch (error) {
+        console.error('Error showing edit modal:', error);
+        alert('Failed to load competency details: ' + error.message);
+    }
+}
+
+async function showAddLevelModal(criterionId) {
+    if (!criterionId) {
+        console.error('No criterion ID provided');
+        return;
+    }
+
+    console.log('Adding level for criterion:', criterionId); // Debug log
+
+    const modalHtml = `
+        <div class="modal fade" id="addLevelModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Proficiency Level</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="add-level-form">
+                            <div class="mb-3">
+                                <label for="level-number" class="form-label">Level Number</label>
+                                <input type="number" class="form-control" id="level-number" min="1" max="10" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="level-description" class="form-label">Description</label>
+                                <textarea class="form-control" id="level-description" rows="3" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="level-examples" class="form-label">Examples (one per line)</label>
+                                <textarea class="form-control" id="level-examples" rows="3"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="save-level-btn">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Add modal to document
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    const modal = new bootstrap.Modal(document.getElementById('addLevelModal'));
+    modal.show();
+
+    // Handle save
+    document.getElementById('save-level-btn').addEventListener('click', async () => {
+        const level = document.getElementById('level-number').value;
+        const description = document.getElementById('level-description').value;
+        const examples = document.getElementById('level-examples').value
+            .split('\n')
+            .filter(example => example.trim());
+
+        try {
+            console.log('Sending request to:', `${API_BASE_URL}/api/levels`); // Debug log
+            const response = await fetch(`${API_BASE_URL}/api/levels`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    level: parseInt(level),
+                    description,
+                    examples,
+                    criterion: criterionId
+                })
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Failed to create level');
+            }
+
+            modal.hide();
+            showCompetencyDetails(currentCompetencyId); // Refresh the view
+        } catch (error) {
+            console.error('Error creating level:', error);
+            alert('Failed to create level: ' + error.message);
+        }
+    });
+
+    // Clean up modal when hidden
+    document.getElementById('addLevelModal').addEventListener('hidden.bs.modal', function () {
+        this.remove();
+    });
+}
+
+// Add event listeners for in-place editing
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('editable')) {
+        const element = e.target;
+        const currentValue = element.textContent.trim();
+        const field = element.dataset.field;
+        const levelId = element.dataset.levelId;
+        
+        // Create input based on field type
+        let input;
+        if (field === 'examples') {
+            input = document.createElement('textarea');
+            input.value = currentValue;
+            input.rows = 3;
+        } else {
+            input = document.createElement('input');
+            input.type = 'text';
+            input.value = currentValue;
+        }
+        
+        // Replace content with input
+        element.innerHTML = '';
+        element.appendChild(input);
+        input.focus();
+        
+        // Show save button
+        const saveBtn = element.closest('tr').querySelector('.save-level-btn');
+        saveBtn.style.display = 'inline-block';
+        
+        // Handle input blur
+        input.addEventListener('blur', async function() {
+            const newValue = input.value.trim();
+            const saveBtn = element.closest('tr').querySelector('.save-level-btn');
+            const row = element.closest('tr');
+            const descriptionElement = row.querySelector('[data-field="description"]');
+            const examplesElement = row.querySelector('[data-field="examples"]');
+            
+            // Get current values
+            let description, examples;
+            
+            // If we're editing the description field
+            if (field === 'description') {
+                description = newValue;
+                // Get examples from either input or display
+                const examplesInput = examplesElement.querySelector('textarea');
+                if (examplesInput) {
+                    examples = examplesInput.value.split('\n').filter(line => line.trim());
+                } else {
+                    examples = examplesElement.textContent.trim() === 'No examples available' ? 
+                        [] : 
+                        Array.from(examplesElement.querySelectorAll('li')).map(li => li.textContent.trim());
+                }
+            } 
+            // If we're editing the examples field
+            else if (field === 'examples') {
+                // Get description from either input or display
+                const descriptionInput = descriptionElement.querySelector('input');
+                description = descriptionInput ? descriptionInput.value.trim() : descriptionElement.textContent.trim();
+                examples = newValue.split('\n').filter(line => line.trim());
+            }
+            // If we're editing any other field
+            else {
+                // Get description from either input or display
+                const descriptionInput = descriptionElement.querySelector('input');
+                description = descriptionInput ? descriptionInput.value.trim() : descriptionElement.textContent.trim();
+                // Get examples from either input or display
+                const examplesInput = examplesElement.querySelector('textarea');
+                if (examplesInput) {
+                    examples = examplesInput.value.split('\n').filter(line => line.trim());
+                } else {
+                    examples = examplesElement.textContent.trim() === 'No examples available' ? 
+                        [] : 
+                        Array.from(examplesElement.querySelectorAll('li')).map(li => li.textContent.trim());
+                }
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/levels/${levelId}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        description: description,
+                        examples: examples
+                    })
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.message || 'Failed to update level');
+                }
+                
+                const updatedLevel = await response.json();
+                
+                // Update display
+                if (field === 'examples') {
+                    const examples = updatedLevel.examples || [];
+                    element.innerHTML = examples.length > 0 ? 
+                        `<ul class="mb-0">${examples.map(ex => `<li>${ex}</li>`).join('')}</ul>` : 
+                        'No examples available';
+                } else {
+                    element.textContent = updatedLevel[field] || newValue;
+                }
+                
+                // Hide save button
+                saveBtn.style.display = 'none';
+            } catch (error) {
+                console.error('Error updating level:', error);
+                alert('Failed to update level: ' + error.message);
+                // Restore original content
+                element.textContent = currentValue;
+                saveBtn.style.display = 'none';
+            }
+        });
+    }
+});
+
+// Add event listener for save buttons
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('save-level-btn')) {
+        const levelId = e.target.dataset.levelId;
+        const row = e.target.closest('tr');
+        const description = row.querySelector('[data-field="description"]').textContent.trim();
+        const examples = row.querySelector('[data-field="examples"]').textContent.trim();
+        
+        // Trigger blur event on any active input
+        const activeInput = document.activeElement;
+        if (activeInput && activeInput.tagName === 'INPUT' || activeInput.tagName === 'TEXTAREA') {
+            activeInput.blur();
+        }
+
+        // Send update request
+        fetch(`${API_BASE_URL}/levels/${levelId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                description: description,
+                examples: examples.split('\n').filter(line => line.trim())
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(errorData => {
+                    throw new Error(errorData.message || 'Failed to update level');
+                });
+            }
+            return response.json();
+        })
+        .then(updatedLevel => {
+            // Update display
+            const descriptionCell = row.querySelector('[data-field="description"]');
+            const examplesCell = row.querySelector('[data-field="examples"]');
+            
+            descriptionCell.textContent = updatedLevel.description;
+            
+            const examples = updatedLevel.examples || [];
+            examplesCell.innerHTML = examples.length > 0 ? 
+                `<ul class="mb-0">${examples.map(ex => `<li>${ex}</li>`).join('')}</ul>` : 
+                'No examples available';
+            
+            // Hide save button
+            e.target.style.display = 'none';
+        })
+        .catch(error => {
+            console.error('Error updating level:', error);
+            alert('Failed to update level: ' + error.message);
+        });
+    }
+});
+
+async function deleteLevel(levelId) {
+    if (!levelId) {
+        console.error('No level ID provided');
+        return;
+    }
+
+    if (!confirm('Are you sure you want to delete this level?')) return;
+
+    try {
+        const response = await fetch(`${API_BASE_URL}/levels/${levelId}`, {
+            method: 'DELETE'
+        });
+
+        if (!response.ok) throw new Error('Failed to delete level');
+
+        showCompetencyDetails(currentCompetencyId); // Refresh the view
+    } catch (error) {
+        console.error('Error deleting level:', error);
+        alert('Failed to delete level: ' + error.message);
     }
 } 

@@ -14,7 +14,7 @@ const upload = require('../middleware/upload');
  * @param {String} baseUrl - Base URL for API endpoints
  * @returns {Object} CASE CFItem object
  */
-function mapDefinitionToCFItem(definition, baseUrl) {
+async function mapDefinitionToCFItem(definition, baseUrl) {
   const uri = `${baseUrl}/api/case/CFItems/${definition._id}`;
   
   // Process criteria and levels for inclusion in the extensions
@@ -54,12 +54,33 @@ function mapDefinitionToCFItem(definition, baseUrl) {
     };
   });
 
+  // Get associated job roles
+  const associations = await ResourceAssociation.find({
+    $or: [
+      { destination: definition._id, associationType: 'REQUIRES' },
+      { source: definition._id, associationType: 'REQUIRED_BY' }
+    ]
+  }).populate('source destination');
+
+  const jobRoles = associations.map(assoc => {
+    const role = assoc.associationType === 'REQUIRES' ? assoc.source : assoc.destination;
+    return {
+      identifier: role._id.toString(),
+      uri: `${baseUrl}/api/case/CFItems/${role._id}`,
+      title: role.title,
+      description: assoc.description,
+      weight: assoc.weight,
+      associationType: assoc.associationType
+    };
+  });
+
   // Map competency type to CASE 1.1 types
   const typeMap = {
     'skill': 'Skill',
     'knowledge': 'Knowledge',
     'ability': 'Ability',
     'disposition': 'Disposition',
+    'job_role': 'Job Role',
     'default': 'Competency'
   };
 
@@ -85,7 +106,8 @@ function mapDefinitionToCFItem(definition, baseUrl) {
     extensions: {
       criteria: criteriaWithLevels || [],
       directAssociations: definition.directAssociations || [],
-      resourceAssociations: definition.resourceAssociations || []
+      resourceAssociations: definition.resourceAssociations || [],
+      jobRoles: jobRoles
     }
   };
 }
@@ -211,34 +233,20 @@ router.get('/CFItems', async (req, res) => {
 router.get('/CFItems/:id', async (req, res) => {
   try {
     const definition = await CompetencyDefinition.findById(req.params.id)
-      .populate({
-        path: 'criteria',
-        populate: {
-          path: 'levels',
-          model: 'RubricCriterionLevel'
-        }
-      })
+      .populate('criteria')
       .populate('directAssociations')
       .populate('resourceAssociations');
-    
+
     if (!definition) {
-      return res.status(404).json({
-        statusCode: 404,
-        statusMessage: "Competency definition not found",
-        operationSuccessful: false
-      });
+      return res.status(404).json({ error: 'Competency definition not found' });
     }
-    
-    const baseUrl = getBaseUrl(req);
-    const cfItem = mapDefinitionToCFItem(definition, baseUrl);
-    
+
+    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    const cfItem = await mapDefinitionToCFItem(definition, baseUrl);
     res.json(cfItem);
-  } catch (err) {
-    res.status(500).json({ 
-      statusCode: 500,
-      statusMessage: err.message,
-      operationSuccessful: false
-    });
+  } catch (error) {
+    console.error('Error fetching CFItem:', error);
+    res.status(500).json({ error: 'Error fetching CFItem' });
   }
 });
 
