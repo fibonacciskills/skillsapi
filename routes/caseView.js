@@ -15,7 +15,7 @@ const upload = require('../middleware/upload');
  * @returns {Object} CASE CFItem object
  */
 async function mapDefinitionToCFItem(definition, baseUrl) {
-  const uri = `${baseUrl}/api/case/CFItems/${definition._id}`;
+  const uri = `${baseUrl}/ims/case/v1p1/CFItems/${definition._id}`;
   
   // Process criteria and levels for inclusion in the extensions
   const criteriaWithLevels = definition.criteria?.map(criterion => {
@@ -66,7 +66,7 @@ async function mapDefinitionToCFItem(definition, baseUrl) {
     const role = assoc.associationType === 'REQUIRES' ? assoc.source : assoc.destination;
     return {
       identifier: role._id.toString(),
-      uri: `${baseUrl}/api/case/CFItems/${role._id}`,
+      uri: `${baseUrl}/ims/case/v1p1/CFItems/${role._id}`,
       title: role.title,
       description: assoc.description,
       weight: assoc.weight,
@@ -100,7 +100,7 @@ async function mapDefinitionToCFItem(definition, baseUrl) {
     license: definition.license || 'https://creativecommons.org/licenses/by/4.0/',
     status: definition.status || 'Active',
     lastChangeDateTime: definition.updatedAt || new Date().toISOString(),
-    CFDocumentURI: `${baseUrl}/api/case/CFDocuments/${definition.framework}`,
+    CFDocumentURI: `${baseUrl}/ims/case/v1p1/CFDocuments/${definition.framework}`,
     creators: definition.creators || ['System'],
     notes: definition.notes || '',
     extensions: {
@@ -119,7 +119,7 @@ async function mapDefinitionToCFItem(definition, baseUrl) {
  * @returns {Object} CASE CFDocument object
  */
 function mapFrameworkToCFDocument(framework, baseUrl) {
-  const uri = `${baseUrl}/api/case/CFDocuments/${framework._id}`;
+  const uri = `${baseUrl}/ims/case/v1p1/CFDocuments/${framework._id}`;
   
   return {
     identifier: framework._id.toString(),
@@ -128,7 +128,7 @@ function mapFrameworkToCFDocument(framework, baseUrl) {
     description: framework.description,
     creator: framework.metadata.createdBy,
     publisher: framework.metadata.organization,
-    CFPackageURI: `${baseUrl}/api/case/CFPackages/${framework._id}`,
+    CFPackageURI: `${baseUrl}/ims/case/v1p1/CFPackages/${framework._id}`,
     version: framework.version,
     lastChangeDateTime: framework.metadata.updatedAt,
     officialSourceURL: uri,
@@ -151,7 +151,7 @@ function getBaseUrl(req) {
 
 /**
  * @swagger
- * /api/case/CFItems:
+ * /ims/case/v1p1/CFItems:
  *   get:
  *     summary: Get all competency definitions in CASE 1.1 CFItem format
  *     tags: [CASE]
@@ -209,7 +209,7 @@ router.get('/CFItems', async (req, res) => {
 
 /**
  * @swagger
- * /api/case/CFItems/{id}:
+ * /ims/case/v1p1/CFItems/{id}:
  *   get:
  *     summary: Get a specific competency definition in CASE 1.1 CFItem format
  *     tags: [CASE]
@@ -252,7 +252,7 @@ router.get('/CFItems/:id', async (req, res) => {
 
 /**
  * @swagger
- * /api/case/CFDocuments:
+ * /ims/case/v1p1/CFDocuments:
  *   get:
  *     summary: Get all competency frameworks in CASE 1.1 CFDocument format
  *     tags: [CASE]
@@ -299,7 +299,7 @@ router.get('/CFDocuments', async (req, res) => {
 
 /**
  * @swagger
- * /api/case/CFDocuments/{id}:
+ * /ims/case/v1p1/CFDocuments/{id}:
  *   get:
  *     summary: Get a specific competency framework in CASE 1.1 CFDocument format
  *     tags: [CASE]
@@ -349,7 +349,7 @@ router.get('/CFDocuments/:id', async (req, res) => {
 
 /**
  * @swagger
- * /api/case/CFPackages/{id}:
+ * /ims/case/v1p1/CFPackages/{id}:
  *   get:
  *     summary: Get a comprehensive package of a competency framework in CASE 1.1 format
  *     description: Returns a complete CASE 1.1 package including the framework, all its competency definitions, associations, and rubrics
@@ -414,11 +414,11 @@ router.get('/CFPackages/:id', async (req, res) => {
       return {
         identifier: assoc._id.toString(),
         associationType: assoc.associationType,
-        sourceNodeURI: `${baseUrl}/api/case/CFItems/${assoc.source._id}`,
-        targetNodeURI: `${baseUrl}/api/case/CFItems/${assoc.target._id}`,
-        CFDocumentURI: `${baseUrl}/api/case/CFDocuments/${framework._id}`,
+        sourceNodeURI: `${baseUrl}/ims/case/v1p1/CFItems/${assoc.source._id}`,
+        targetNodeURI: `${baseUrl}/ims/case/v1p1/CFItems/${assoc.target._id}`,
+        CFDocumentURI: `${baseUrl}/ims/case/v1p1/CFDocuments/${framework._id}`,
         lastChangeDateTime: assoc.metadata?.updatedAt || new Date(),
-        originNodeURI: `${baseUrl}/api/case/CFItems/${assoc.source._id}`
+        originNodeURI: `${baseUrl}/ims/case/v1p1/CFItems/${assoc.source._id}`
       };
     });
     
@@ -446,7 +446,7 @@ router.get('/CFPackages/:id', async (req, res) => {
           description: criterion.description,
           name: criterion.name,
           CFItemURI: criterion.competencyDefinition 
-            ? `${baseUrl}/api/case/CFItems/${criterion.competencyDefinition}` 
+            ? `${baseUrl}/ims/case/v1p1/CFItems/${criterion.competencyDefinition}` 
             : null,
           weight: criterion.weight || 1.0,
           position: criterion.order || 1,
@@ -458,7 +458,7 @@ router.get('/CFPackages/:id', async (req, res) => {
         identifier: rubric._id.toString(),
         title: rubric.name,
         description: rubric.description,
-        CFDocumentURI: `${baseUrl}/api/case/CFDocuments/${framework._id}`,
+        CFDocumentURI: `${baseUrl}/ims/case/v1p1/CFDocuments/${framework._id}`,
         rubricCriteria: cfRubricCriteria
       };
     });
@@ -466,7 +466,7 @@ router.get('/CFPackages/:id', async (req, res) => {
     // Aggregate into full CFPackage
     const cfPackage = {
       identifier: framework._id.toString(),
-      uri: `${baseUrl}/api/case/CFPackages/${framework._id}`,
+      uri: `${baseUrl}/ims/case/v1p1/CFPackages/${framework._id}`,
       creator: framework.metadata.createdBy,
       title: framework.name,
       lastChangeDateTime: framework.metadata.updatedAt,

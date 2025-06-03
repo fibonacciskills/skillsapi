@@ -291,7 +291,8 @@ app.use('/api/rubrics', rubricRoutes);
 app.use('/api/criteria', rubricCriterionRoutes);
 app.use('/api/levels', rubricCriterionLevelRoutes);
 app.use('/api', uploadRoutes);
-app.use('/api/case', caseViewRoutes);
+// CASE 1.1 endpoints
+app.use('/ims/case/v1p1', caseViewRoutes);
 
 // Root endpoint - serve the frontend UI
 app.get('/', (req, res) => {
@@ -310,7 +311,7 @@ app.get('/api', (req, res) => {
       rubrics: '/api/rubrics',
       criteria: '/api/criteria',
       levels: '/api/levels',
-      case: '/api/case'
+      case: '/ims/case/v1p1'
     }
   });
 });

@@ -52,11 +52,24 @@ cd competency-framework-api
 npm install
 ```
 
-3. Make sure MongoDB is running locally or update the connection string in `apiserver` to point to your MongoDB instance.
+3. Start MongoDB so the API can connect. For example:
+   - If MongoDB is installed locally:
+     ```bash
+     mongod --dbpath /path/to/your/db
+     ```
+   - On macOS with Homebrew:
+     ```bash
+     brew services start mongodb-community
+     ```
+   - Or using Docker:
+     ```bash
+     docker run -d -p 27017:27017 --name mongodb mongo:4.4
+     ```
+   If you need to point to a different MongoDB URI, update `MONGODB_URI` in `.env` or in `apiserver`.
 
 ## Usage
 
-1. Start the server:
+1. Ensure MongoDB is running (from Step 3 above), then start the server:
 ```
 npm start
 ```
